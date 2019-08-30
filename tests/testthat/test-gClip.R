@@ -1,0 +1,15 @@
+context("gClip")
+
+test_that("land area preserved", {
+
+  county <- TIGER2015::TIGER2015_CA_counties["06001", ]
+  coast <- geotools::SFBA_OSM_coast
+
+  expect_warning(
+    clipped <- gClip(county, coast, verbose = TRUE),
+    "attribute variables are assumed to be spatially constant throughout all geometries")
+
+  expect_equal(parse_double(county[["ALAND"]]), 1.91e9, tol = 0.01)
+  expect_equal(st_area(clipped), 1.91e9, tol = 0.01)
+
+})
