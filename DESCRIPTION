@@ -18,7 +18,6 @@ Depends:
     funtools,
     leaflet,
     mapview,
-    geosphere,
     ARB (>= 2018.05.16),
     shptools (>= 2018.05.17)
 Imports:
@@ -26,6 +25,7 @@ Imports:
 Suggests:
     leaflet,
     mapview,
+    geosphere,
     testthat
 Extends:
     sp,
