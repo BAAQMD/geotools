@@ -1,3 +1,5 @@
+#' st_sample_geotools
+#'
 #' @examples
 #' county_geodata <- TIGER2015::TIGER2015_SFBA_counties %>% with_county_populations()
 #' county_sample <- county_geodata %>% st_sample(n = 1000, weight_var = "county_pop_total")
@@ -11,9 +13,21 @@
 #' mapview::mapview(ALA_block_sample, cex = 1, color = NULL)
 #'
 #' @export
-st_sample <- function (geodata, n, fraction = NULL, weight_var, type = "random", iter = 9, ...) {
+st_sample_geotools <- function (
+  geodata,
+  n,
+  fraction = NULL,
+  weight_var,
+  type = "random",
+  iter = 9,
+  ...
+) {
 
-  msg <- function (...) if(isTRUE(verbose)) message("[st_sample] ", ...)
+  msg <- function (...) if(isTRUE(verbose)) message("[st_sample_geotools] ", ...)
+
+  .Defunct(
+    new = "st_sample_points",
+    package = "sf")
 
   if (missing(n)) {
     if (is.null(fraction)) stop("must supply either `n` or `fraction`")
