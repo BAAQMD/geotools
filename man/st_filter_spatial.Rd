@@ -5,7 +5,7 @@
 \title{Filter one set of geometries based on another}
 \usage{
 st_filter_spatial(x, y, datum = st_crs(32610), fun = st_intersection,
-  view = FALSE, verbose = TRUE)
+  view = FALSE, verbose = getOption("verbose"))
 }
 \arguments{
 \item{x}{geometries to filter}
@@ -20,7 +20,4 @@ st_filter_spatial(x, y, datum = st_crs(32610), fun = st_intersection,
 }
 \description{
 Filter one set of geometries based on another
-}
-\note{
-FIXME: move to \code{geotools} package
 }

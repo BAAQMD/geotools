@@ -6,12 +6,15 @@
 #' @param view logical; show results in Rstudio viewer?
 #' @param verbose logical
 #'
-#' @note
-#'
-#' @note FIXME: move to `geotools` package
-#'
 #' @export
-st_filter_spatial <- function (x, y, datum = st_crs(32610), fun = st_intersection, view = FALSE, verbose = TRUE) {
+st_filter_spatial <- function (
+  x,
+  y,
+  datum = st_crs(32610),
+  fun = st_intersection,
+  view = FALSE,
+  verbose = getOption("verbose")
+) {
 
   msg <- function (...) if (isTRUE(verbose)) message("[st_filter_spatial] ", ...)
 
