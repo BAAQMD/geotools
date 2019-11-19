@@ -1,7 +1,7 @@
 .onLoad <- function(libname, pkgname) {
 
   st_sample_msg <-
-    str_c(
+    stringr::str_c(
       "-------------------------------------------------------------------------------",
       "A better `st_sample()` is now provided by the `sf` package.",
       "Its behavior is different, but more well-supported and future-proofed. ",
