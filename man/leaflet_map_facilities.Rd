@@ -4,9 +4,18 @@
 \alias{leaflet_map_facilities}
 \title{Map facility-specific locations (as pins), or quantities (as circles), with leaflet}
 \usage{
-leaflet_map_facilities(facilities, size = NULL, color = "orange",
-  opacity = 0.333, popup = NULL, max_size = 100, stroke = FALSE,
-  popupOptions = popupOptions(), ..., verbose = getOption("verbose"))
+leaflet_map_facilities(
+  facilities,
+  size = NULL,
+  color = "orange",
+  opacity = 0.333,
+  popup = NULL,
+  max_size = 100,
+  stroke = FALSE,
+  popupOptions = popupOptions(),
+  ...,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
 \item{facilities}{(geodata) for example: \code{point_source_facilities(RY(2015))}}

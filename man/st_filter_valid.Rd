@@ -4,8 +4,7 @@
 \alias{st_filter_valid}
 \title{Discard invalid geometries}
 \usage{
-st_filter_valid(geodata, min_dimension = 1, view = FALSE,
-  verbose = TRUE)
+st_filter_valid(geodata, min_dimension = 1, view = FALSE, verbose = TRUE)
 }
 \arguments{
 \item{geodata}{object of type \code{sf}}

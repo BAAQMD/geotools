@@ -13,15 +13,13 @@ merge_SpatialPolygonsDataFrame(x, y, by, ...)
 merge_SpatialLinesDataFrame(x, y, by, ...)
 }
 \arguments{
-\item{x}{a \code{SpatialPolygonsDataFrame} object}
+\item{x}{a \code{SpatialLinesDataFrame} object}
 
 \item{y}{data.frame}
 
 \item{by}{character}
 
 \item{\dots}{further arguments, as in \link{merge} generally (e.g. \code{sort})}
-
-\item{x}{a \code{SpatialLinesDataFrame} object}
 }
 \value{
 an object of the same class as \code{x}

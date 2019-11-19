@@ -5,11 +5,23 @@
 \alias{setViewSFBA}
 \title{Recenter and zoom map to fit SF Bay Area}
 \usage{
-setViewBayArea(leaflet_map, lng = NULL, lat = NULL, zoom = NULL, ...,
-  verbose = getOption("verbose"))
+setViewBayArea(
+  leaflet_map,
+  lng = NULL,
+  lat = NULL,
+  zoom = NULL,
+  ...,
+  verbose = getOption("verbose")
+)
 
-setViewSFBA(leaflet_map, lng = NULL, lat = NULL, zoom = NULL, ...,
-  verbose = getOption("verbose"))
+setViewSFBA(
+  leaflet_map,
+  lng = NULL,
+  lat = NULL,
+  zoom = NULL,
+  ...,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
 \item{leaflet_map}{created with \code{leaflet()} or \code{leaflet_SFBA()}}

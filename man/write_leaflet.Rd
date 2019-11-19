@@ -4,8 +4,13 @@
 \alias{write_leaflet}
 \title{Write a leaflet map to disk}
 \usage{
-write_leaflet(leaflet_map, file = NULL, ..., remove_url = TRUE,
-  verbose = getOption("verbose"))
+write_leaflet(
+  leaflet_map,
+  file = NULL,
+  ...,
+  remove_url = TRUE,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
 \item{leaflet_map}{(object) created with \code{\link[leaflet:leaflet]{leaflet::leaflet()}}, \code{\link[=leaflet_SFBA]{leaflet_SFBA()}}, etc.}

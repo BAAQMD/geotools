@@ -4,11 +4,21 @@
 \alias{leaflet_map_SFBA}
 \title{Leaflet map of the SF Bay Area}
 \usage{
-leaflet_map_SFBA(data, tileset, ..., lng = NULL, lat = NULL,
-  zoom = NULL, max_zoom = NULL, options = NULL,
-  layer_controls = TRUE, tileset_providers = NULL,
-  tile_options = tileOptions(opacity = 1), attribution = NULL,
-  verbose = getOption("verbose"))
+leaflet_map_SFBA(
+  data,
+  tileset,
+  ...,
+  lng = NULL,
+  lat = NULL,
+  zoom = NULL,
+  max_zoom = NULL,
+  options = NULL,
+  layer_controls = TRUE,
+  tileset_providers = NULL,
+  tile_options = tileOptions(opacity = 1),
+  attribution = NULL,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
 \item{...}{arguments to \code{\link[leaflet:leaflet]{leaflet::leaflet()}}}

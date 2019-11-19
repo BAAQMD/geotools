@@ -4,8 +4,14 @@
 \alias{st_filter_spatial}
 \title{Filter one set of geometries based on another}
 \usage{
-st_filter_spatial(x, y, datum = st_crs(32610), fun = st_intersection,
-  view = FALSE, verbose = getOption("verbose"))
+st_filter_spatial(
+  x,
+  y,
+  datum = st_crs(32610),
+  fun = st_intersection,
+  view = FALSE,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
 \item{x}{geometries to filter}

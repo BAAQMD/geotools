@@ -4,8 +4,7 @@
 \alias{coordinates_to_columns}
 \title{Copy coordinates into (two) columns}
 \usage{
-coordinates_to_columns(geodata, coords, ...,
-  verbose = getOption("verbose"))
+coordinates_to_columns(geodata, coords, ..., verbose = getOption("verbose"))
 }
 \arguments{
 \item{geodata}{(sf or sfc)}

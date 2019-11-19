@@ -4,8 +4,15 @@
 \alias{st_sample_geotools}
 \title{st_sample_geotools}
 \usage{
-st_sample_geotools(geodata, n, fraction = NULL, weight_var,
-  type = "random", iter = 9, ...)
+st_sample_geotools(
+  geodata,
+  n,
+  fraction = NULL,
+  weight_var,
+  type = "random",
+  iter = 9,
+  ...
+)
 }
 \description{
 st_sample_geotools

@@ -4,8 +4,7 @@
 \alias{as_spatial}
 \title{Create a SpatialPointsDataFrame from tabular data}
 \usage{
-as_spatial(input_data, coord_vars, crs = CRS(NA_character_),
-  na.rm = TRUE, ...)
+as_spatial(input_data, coord_vars, crs = CRS(NA_character_), na.rm = TRUE, ...)
 }
 \description{
 Create a SpatialPointsDataFrame from tabular data
