@@ -2,10 +2,23 @@
 % Please edit documentation in R/reproject.R
 \name{reproject}
 \alias{reproject}
-\title{Reproject/transform a Spatial* object}
+\title{reproject}
 \usage{
 reproject(x, new_CRS = EPSG_4326, new_coordnames = c("lng", "lat"))
 }
+\arguments{
+\item{x}{a \verb{Spatial*} or \code{sf} object}
+
+\item{new_CRS}{integer, \code{CRS}, or \code{st_crs} object}
+
+\item{new_coordnames}{character vector}
+}
+\value{
+An object of the same class as \code{x}, but reprojected to the new coordinate system, and with new coordnames.
+}
 \description{
-Reproject/transform a Spatial* object
+Reproject/transform geodata.
+}
+\details{
+If \code{x} is a \code{Spatial} object (from the \code{sp} package), \code{new_CRS} must be a \code{CRS} object; otherwise, pass an integer (EPSG code) or \code{st_crs()} result.
 }
