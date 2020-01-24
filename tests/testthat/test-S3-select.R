@@ -1,12 +1,12 @@
-context("S3 select")
+context("S3 dplyr::select()")
 
 data(meuse, package = "sp")
 coordinates(meuse) <- ~ x + y
 
 selected <-
-  select(meuse, Pb = lead, Cu = copper)
+  dplyr::select(meuse, Pb = lead, Cu = copper)
 
-test_that("select worked", {
+test_that("dplyr::select() worked", {
   expect_equal(names(selected), c("Pb", "Cu"))
 })
 

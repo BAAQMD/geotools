@@ -8,7 +8,7 @@
 #' tract_sample <- tract_geodata %>% st_sample(n = 1000, weight_var = "tract_pop_total")
 #'
 #' ALA_block_geodata <- TIGER2015::TIGER2015_SFBA_blocks %>% filter(str_detect(GEOID10, "^06001")) %>% with_block_populations()
-#' ALA_block_sample <- ALA_block_geodata %>% select(block_id, block_pop_total) %>% st_sample(frac = 0.1, weight_var = "block_pop_total")
+#' ALA_block_sample <- ALA_block_geodata %>% dplyr::select(block_id, block_pop_total) %>% st_sample(frac = 0.1, weight_var = "block_pop_total")
 #'
 #' mapview::mapview(ALA_block_sample, cex = 1, color = NULL)
 #'
@@ -64,7 +64,7 @@ st_sample_geotools <- function (
     rbind_list() %>%
     st_as_sf() %>%
     left_join(poly_objs@data, by = "poly_id") %>%
-    select(-poly_id)
+    dplyr::select(-poly_id)
 
   return(joined)
 
