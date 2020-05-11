@@ -1,29 +1,24 @@
 context("filter_spatial")
 
-library(mapview)
-
 SFBA_tracts_WGS84 <-
   TIGER2015::TIGER2015_SFBA_tracts %>%
   reproject(
     new_CRS = WGS84)
 
-CC_county_WGS84 <-
+#
+# Tests with `ALA_county_WGS84`
+#
+
+ALA_county_WGS84 <-
   TIGER2015::TIGER2015_CA_counties %>%
   subset(
-    str_detect(.$GEOID, "^06013")) %>%
+    str_detect(.$GEOID, "^06001")) %>%
   reproject(
     new_CRS = WGS84)
 
 test_that("Alameda County (sp)", {
 
   # Simple test: only containment (shouldn't be any "overlapping")
-
-  ALA_county_WGS84 <-
-    TIGER2015::TIGER2015_CA_counties %>%
-    subset(
-      str_detect(.$GEOID, "^06001")) %>%
-    reproject(
-      new_CRS = WGS84)
 
   test_tracts <-
     filter_spatial(
@@ -43,77 +38,85 @@ test_that("Alameda County (sp)", {
 
 })
 
-  test_that("Alameda County (sf)", {
+test_that("Alameda County (sf)", {
 
-    # Simple test: only containment (shouldn't be any "overlapping")
+  # Simple test: only containment (shouldn't be any "overlapping")
 
-    sf1 <- st_as_sf(SFBA_tracts_WGS84)
-    sf2 <- st_as_sf(ALA_county_WGS84)
-    test_tracts <- filter_spatial(sf1, sf2)
+  sf1 <- st_as_sf(SFBA_tracts_WGS84)
+  sf2 <- st_as_sf(ALA_county_WGS84)
+  test_tracts <- filter_spatial(sf1, sf2)
 
-    mapview::mapview(test_tracts) %>% addFeatures(ALA_county_WGS84, fill = FALSE, color = "red")
-    expect_equal(nrow(test_tracts), 361)
+  mapview::mapview(test_tracts) %>% addFeatures(ALA_county_WGS84, fill = FALSE, color = "red")
+  expect_equal(nrow(test_tracts), 361)
 
-  })
+})
 
-  test_that("Richmond CARE Impact Region", {
+#
+# Tests with `CARE_Richmond_WGS84`
+#
 
-    # More complicated: some tracts are "contained"; some tracts "overlap"
+test_that("Richmond CARE Impact Region", {
 
-    CARE_Richmond_WGS84 <-
-      CARE::CARE_region_geodata %>%
-      filter(
-        CARE_name == "Richmond") %>%
-      filter(
-        CARE_designation == "impact") %>%
-      reproject(
-        new_CRS = WGS84)
+  # More complicated: some tracts are "contained"; some tracts "overlap"
 
-    spobj1 <- SFBA_tracts_WGS84
-    spobj2 <- CARE_Richmond_WGS84
+  CARE_Richmond_WGS84 <-
+    CARE::CARE_region_geodata %>%
+    filter(
+      CARE_name == "Richmond") %>%
+    filter(
+      CARE_designation == "impact") %>%
+    reproject(
+      new_CRS = WGS84)
 
-    expected_nrow <- 36
+  spobj1 <- SFBA_tracts_WGS84
+  spobj2 <- CARE_Richmond_WGS84
 
-    expect_message(
-      test_spobj <- filter_spatial(spobj1, spobj2),
-      "st_as_sf")
+  expected_nrow <- 36
 
-    expect_equal(nrow(test_spobj), expected_nrow)
+  expect_message(
+    test_spobj <- filter_spatial(spobj1, spobj2),
+    "st_as_sf")
 
-    sf1 <- st_as_sf(spobj1)
-    sf2 <- st_as_sf(spobj2)
+  expect_equal(nrow(test_spobj), expected_nrow)
 
-    test_sf <- filter_spatial(sf1, sf2)
-    expect_equal(nrow(test_sf), expected_nrow)
+  sf1 <- st_as_sf(spobj1)
+  sf2 <- st_as_sf(spobj2)
 
-  })
+  test_sf <- filter_spatial(sf1, sf2)
+  expect_equal(nrow(test_sf), expected_nrow)
 
-  test_that("Vallejo CARE Impact Region", {
+})
 
-    CARE_Vallejo_WGS84 <-
-      CARE::CARE_region_geodata %>%
-      filter(
-        CARE_name == "Vallejo") %>%
-      filter(
-        CARE_designation == "impact") %>%
-      reproject(
-        new_CRS = WGS84)
+#
+# Tests with `CARE_Vallejo_WGS84`
+#
 
-    spobj1 <- SFBA_tracts_WGS84
-    spobj2 <- CARE_Vallejo_WGS84
+test_that("Vallejo CARE Impact Region", {
 
-    expected_nrow <- 22
+  CARE_Vallejo_WGS84 <-
+    CARE::CARE_region_geodata %>%
+    filter(
+      CARE_name == "Vallejo") %>%
+    filter(
+      CARE_designation == "impact") %>%
+    reproject(
+      new_CRS = WGS84)
 
-    expect_message(
-      test_spobj <- filter_spatial(spobj1, spobj2),
-      "st_as_sf")
+  spobj1 <- SFBA_tracts_WGS84
+  spobj2 <- CARE_Vallejo_WGS84
 
-    expect_equal(nrow(test_spobj), expected_nrow)
+  expected_nrow <- 22
 
-    sf1 <- st_as_sf(spobj1)
-    sf2 <- st_as_sf(spobj2)
+  expect_message(
+    test_spobj <- filter_spatial(spobj1, spobj2),
+    "st_as_sf")
 
-    test_sf <- filter_spatial(sf1, sf2)
-    expect_equal(nrow(test_sf), expected_nrow)
+  expect_equal(nrow(test_spobj), expected_nrow)
 
-  })
+  sf1 <- st_as_sf(spobj1)
+  sf2 <- st_as_sf(spobj2)
+
+  test_sf <- filter_spatial(sf1, sf2)
+  expect_equal(nrow(test_sf), expected_nrow)
+
+})
