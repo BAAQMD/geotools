@@ -39,56 +39,63 @@ test_that("Alameda County (sf)", {
 
 })
 
-CARE_Richmond_WGS84 <-
-  CARE::CARE_impact_regions %>%
-  subset(.$CARE_name == "Richmond") %>%
-  reproject(WGS84)
+  test_that("Richmond CARE Impact Region", {
 
-test_that("Richmond CARE Impact Region", {
+    # More complicated: some tracts are "contained"; some tracts "overlap"
 
-  # More complicated: some tracts are "contained"; some tracts "overlap"
+    CARE_Richmond_WGS84 <-
+      CARE::CARE_region_geodata %>%
+      filter(
+        CARE_name == "Richmond") %>%
+      filter(
+        CARE_designation == "impact") %>%
+      reproject(
+        new_CRS = WGS84)
 
-  spobj1 <- SFBA_tracts_WGS84
-  spobj2 <- CARE_Richmond_WGS84
+    spobj1 <- SFBA_tracts_WGS84
+    spobj2 <- CARE_Richmond_WGS84
 
-  expected_nrow <- 36
+    expected_nrow <- 36
 
-  expect_message(
-    test_spobj <- filter_spatial(spobj1, spobj2),
-    "st_as_sf")
+    expect_message(
+      test_spobj <- filter_spatial(spobj1, spobj2),
+      "st_as_sf")
 
-  expect_equal(nrow(test_spobj), expected_nrow)
+    expect_equal(nrow(test_spobj), expected_nrow)
 
-  sf1 <- st_as_sf(spobj1)
-  sf2 <- st_as_sf(spobj2)
+    sf1 <- st_as_sf(spobj1)
+    sf2 <- st_as_sf(spobj2)
 
-  test_sf <- filter_spatial(sf1, sf2)
-  expect_equal(nrow(test_sf), expected_nrow)
+    test_sf <- filter_spatial(sf1, sf2)
+    expect_equal(nrow(test_sf), expected_nrow)
 
-})
+  })
 
-CARE_Vallejo_WGS84 <-
-  CARE::CARE_impact_regions %>%
-  subset(.$CARE_name == "Vallejo") %>%
-  reproject(WGS84)
+  test_that("Vallejo CARE Impact Region", {
 
-test_that("Vallejo CARE Impact Region", {
+    CARE_Vallejo_WGS84 <-
+      CARE::CARE_region_geodata %>%
+      filter(
+        CARE_name == "Vallejo") %>%
+      filter(
+        CARE_designation == "impact") %>%
+      reproject(
+        new_CRS = WGS84)
 
-  spobj1 <- SFBA_tracts_WGS84
-  spobj2 <- CARE_Vallejo_WGS84
+    spobj1 <- SFBA_tracts_WGS84
+    spobj2 <- CARE_Vallejo_WGS84
 
-  expected_nrow <- 22
+    expected_nrow <- 22
 
-  expect_message(
-    test_spobj <- filter_spatial(spobj1, spobj2),
-    "st_as_sf")
+    expect_message(
+      test_spobj <- filter_spatial(spobj1, spobj2),
+      "st_as_sf")
 
-  expect_equal(nrow(test_spobj), expected_nrow)
+    expect_equal(nrow(test_spobj), expected_nrow)
 
-  sf1 <- st_as_sf(spobj1)
-  sf2 <- st_as_sf(spobj2)
+    sf1 <- st_as_sf(spobj1)
+    sf2 <- st_as_sf(spobj2)
 
-  test_sf <- filter_spatial(sf1, sf2)
-  expect_equal(nrow(test_sf), expected_nrow)
+    test_sf <- filter_spatial(sf1, sf2)
+    expect_equal(nrow(test_sf), expected_nrow)
 
-})
