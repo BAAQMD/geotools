@@ -4,40 +4,57 @@ library(mapview)
 
 SFBA_tracts_WGS84 <-
   TIGER2015::TIGER2015_SFBA_tracts %>%
-  reproject(WGS84)
-
-ALA_county_WGS84 <-
-  TIGER2015::TIGER2015_CA_counties %>%
-  subset(str_detect(.$GEOID, "^06001")) %>%
-  reproject(WGS84)
+  reproject(
+    new_CRS = WGS84)
 
 CC_county_WGS84 <-
   TIGER2015::TIGER2015_CA_counties %>%
-  subset(str_detect(.$GEOID, "^06013")) %>%
-  reproject(WGS84)
+  subset(
+    str_detect(.$GEOID, "^06013")) %>%
+  reproject(
+    new_CRS = WGS84)
 
 test_that("Alameda County (sp)", {
 
   # Simple test: only containment (shouldn't be any "overlapping")
-  test_tracts <- filter_spatial(SFBA_tracts_WGS84, ALA_county_WGS84)
-  expect_equal(nrow(test_tracts), 361)
 
-  mapview::mapview(test_tracts) %>% addFeatures(ALA_county_WGS84, fill = FALSE, color = "red")
+  ALA_county_WGS84 <-
+    TIGER2015::TIGER2015_CA_counties %>%
+    subset(
+      str_detect(.$GEOID, "^06001")) %>%
+    reproject(
+      new_CRS = WGS84)
+
+  test_tracts <-
+    filter_spatial(
+      SFBA_tracts_WGS84,
+      ALA_county_WGS84)
+
+  expect_equal(
+    nrow(test_tracts), 361)
+
+  expect_success(
+    mapview::mapview(
+      test_tracts) %>%
+      mapview::addFeatures(
+        ALA_county_WGS84,
+        fill = FALSE,
+        color = "red"))
 
 })
 
-test_that("Alameda County (sf)", {
+  test_that("Alameda County (sf)", {
 
-  # Simple test: only containment (shouldn't be any "overlapping")
+    # Simple test: only containment (shouldn't be any "overlapping")
 
-  sf1 <- st_as_sf(SFBA_tracts_WGS84)
-  sf2 <- st_as_sf(ALA_county_WGS84)
-  test_tracts <- filter_spatial(sf1, sf2)
+    sf1 <- st_as_sf(SFBA_tracts_WGS84)
+    sf2 <- st_as_sf(ALA_county_WGS84)
+    test_tracts <- filter_spatial(sf1, sf2)
 
-  mapview::mapview(test_tracts) %>% addFeatures(ALA_county_WGS84, fill = FALSE, color = "red")
-  expect_equal(nrow(test_tracts), 361)
+    mapview::mapview(test_tracts) %>% addFeatures(ALA_county_WGS84, fill = FALSE, color = "red")
+    expect_equal(nrow(test_tracts), 361)
 
-})
+  })
 
   test_that("Richmond CARE Impact Region", {
 
@@ -99,3 +116,4 @@ test_that("Alameda County (sf)", {
     test_sf <- filter_spatial(sf1, sf2)
     expect_equal(nrow(test_sf), expected_nrow)
 
+  })
