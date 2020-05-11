@@ -26,16 +26,16 @@ reproject <- function (
 
   if (inherits(x, "sf")) {
 
-    reprojected <- st_transform(x, new_CRS)
+    reprojected <- sf::st_transform(x, new_CRS)
     if (!missing(new_coordnames)) {
       warning("Not handling new_coordnames since your data is `sf` rather than `Spatial`")
     }
 
   } else if (inherits(x, "Spatial")) {
 
-    reprojected <- spTransform(x, new_CRS)
+    reprojected <- sp::spTransform(x, new_CRS)
     if (!missing(new_coordnames)) {
-      coordnames(reprojected) <- new_coordnames
+      sp::coordnames(reprojected) <- new_coordnames
     }
 
   } else {
