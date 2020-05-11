@@ -3,7 +3,7 @@ context("gClip")
 test_that("land area preserved", {
 
   county <- TIGER2015::TIGER2015_CA_counties["06001", ]
-  coast <- geotools::SFBA_OSM_coast
+  coast <- SFBA::SFBA_OSM_coast
 
   expect_warning(
     clipped <- gClip(county, coast, verbose = TRUE),

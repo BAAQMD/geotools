@@ -25,6 +25,7 @@ Suggests:
     leaflet,
     mapview,
     TIGER2015,
+    SFBA,
     geosphere,
     testthat
 Extends:
