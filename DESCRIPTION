@@ -24,6 +24,7 @@ Imports:
 Suggests:
     leaflet,
     mapview,
+    TIGER2015,
     geosphere,
     testthat
 Extends:
