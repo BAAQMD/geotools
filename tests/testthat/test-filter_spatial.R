@@ -31,7 +31,7 @@ test_that("Alameda County (sp)", {
   expect_success(
     mapview::mapview(
       test_tracts) %>%
-      mapview::addFeatures(
+      leafem::addFeatures(
         ALA_county_WGS84,
         fill = FALSE,
         color = "red"))
