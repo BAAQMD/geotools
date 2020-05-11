@@ -16,7 +16,6 @@ Depends:
     tidyverse,
     strtools (>= 2018.05.14),
     funtools,
-    leaflet,
     mapview,
     ARB (>= 2018.05.16),
     shptools (>= 2018.05.17)
