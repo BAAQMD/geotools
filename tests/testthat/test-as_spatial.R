@@ -1,9 +1,10 @@
 context("as_spatial")
 
 input_data <-
-  data_frame(fac_id = c(10, 11, 12),
-             fac_lng = c(-122, -121, NA),
-             fac_lat = c(NA, 38, 39))
+  tibble::tibble(
+    fac_id = c(10, 11, 12),
+    fac_lng = c(-122, -121, NA),
+    fac_lat = c(NA, 38, 39))
 
 test_that("na.rm = default", {
 

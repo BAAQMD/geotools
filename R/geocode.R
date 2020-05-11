@@ -28,10 +28,11 @@ geocode <- function (address, ..., key, verbose = FALSE) {
   return(result)
 }
 
+#' @importFrom tibble tibble
 #' @export
 as.data.frame.GoogleGeocoderResult <- function (x, row.names = NULL, optional = FALSE, ...) {
   f <- function (json_list) {
-    with(json_list, data_frame(
+    with(json_list, tibble::tibble(
       geo_addr = as.character(formatted_address),
       geo_lng = geometry$location$lng,
       geo_lat = geometry$location$lat))
@@ -39,6 +40,6 @@ as.data.frame.GoogleGeocoderResult <- function (x, row.names = NULL, optional = 
   if (!is.null(x$status) && x$status == "OK") {
     x$results %>% lapply(f) %>% bind_rows()
   } else {
-    data_frame(geo_addr = NA_character_, geo_lng = NA_real_, geo_lat = NA_real_)
+    tibble::tibble(geo_addr = NA_character_, geo_lng = NA_real_, geo_lat = NA_real_)
   }
 }
