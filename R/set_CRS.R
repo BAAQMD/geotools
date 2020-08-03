@@ -1,8 +1,11 @@
-#' Manually set coordinate reference system of a Spatial* object
+#' set_CRS
 #'
-#' @param x a \code{Spatial} or \code{sf} object
-#' @param new_CRS character string or object created via \code{CRS()}
-#' @note The inventory package provides a few: \code{WGS84} (lng/lat), \code{UTM10_NAD83}, \code{UTM10_NAD27}, and \code{UTM10_WGS84}. For others, see
+#' Manually set coordinate reference system
+#'
+#' @param x `sf` or `Spatial*` object
+#' @param new_CRS character string or object created via `CRS()`
+#' @note The inventory package provides a few: `WGS84` (lng/lat), `UTM10_NAD83`, `UTM10_NAD27`, and `UTM10_WGS84`. For others, see
+#'
 #' @export
 set_CRS <- function (x, new_CRS) {
 
