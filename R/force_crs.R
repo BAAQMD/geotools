@@ -1,12 +1,19 @@
 #' Force replacement of CRS while leaving coordinate values unchanged
 #'
-#' @param geodata (sf or sfc)
-#' @param coords (character) names of the (two) columns containing coordinates
+#' @param geodata `sf` or `sfc` object
+#' @param crs passed to `sf::st_as_sf()``
 #' @param ... further arguments to [sf::st_as_sf()]
-#' @param verbose (logical)
+#' @param verbose display messages
+#'
+#' @importFrom sf st_as_sf
 #'
 #' @export
-force_crs <- function (geodata, crs, ..., verbose = getOption("verbose")) {
+force_crs <- function (
+  geodata,
+  crs,
+  ...,
+  verbose = getOption("verbose")
+) {
 
   msg <- function (...) if(isTRUE(verbose)) message("[force_crs] ", ...)
 
@@ -28,8 +35,17 @@ force_crs <- function (geodata, crs, ..., verbose = getOption("verbose")) {
   #
   # FIXME: not designed to handle the case where `geodata` inherits from `sfc`
   #
-  if (inherits(geodata, "sfc")) warning("[force_crs] casting back to `sf`, not `sfc`")
-  coerced <- st_as_sf(naive, coords = coord_vars, crs = crs, ...)
+  if (inherits(geodata, "sfc")) {
+    warning("[force_crs] casting back to `sf`, not `sfc`")
+  }
+
+  coerced <-
+    sf::st_as_sf(
+      naive,
+      coords = coord_vars,
+      crs = crs,
+      ...)
+
   return(coerced)
 
 }
