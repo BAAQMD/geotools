@@ -1,5 +1,13 @@
 #' st_sample_geotools
 #'
+#' @param geodata `sf` object
+#' @param n number of features to sample
+#' @param fraction fraction of features to sample
+#' @param weight_var (optional) variable in `geodata` to weight by
+#' @param type passed to `spsample`; defaults to "random"
+#' @param iter passed to `spsample`
+#' @param ... reserved for future use
+#'
 #' @importFrom tibble tibble
 #'
 #' @examples
@@ -53,7 +61,7 @@ st_sample_geotools <- function (
   sampler <- function (poly_id) {
     feature <- poly_geoms[poly_id, ]
     n_pts <- poly_counts[poly_id]
-    pt_coords <- spsample(feature, n_pts, type = "random", iter = iter)
+    pt_coords <- spsample(feature, n_pts, type = type, iter = iter)
     pt_attrs <- tibble::tibble(poly_id = rep(poly_id, n_pts))
     return(SpatialPointsDataFrame(pt_coords, pt_attrs))
   }
