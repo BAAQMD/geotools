@@ -2,10 +2,16 @@
 % Please edit documentation in R/fortify_xy.R
 \name{fortify_xy}
 \alias{fortify_xy}
-\title{For use with ggplot2 (plotting polygons)}
+\title{fortify_xy}
 \usage{
 fortify_xy(spobj)
 }
+\arguments{
+\item{spobj}{\verb{Spatial*} object}
+}
 \description{
 For use with ggplot2 (plotting polygons)
+}
+\note{
+Consider using \code{ggplot2::geom_sf()} instead.
 }

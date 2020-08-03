@@ -14,6 +14,21 @@ st_sample_geotools(
   ...
 )
 }
+\arguments{
+\item{geodata}{\code{sf} object}
+
+\item{n}{number of features to sample}
+
+\item{fraction}{fraction of features to sample}
+
+\item{weight_var}{(optional) variable in \code{geodata} to weight by}
+
+\item{type}{passed to \code{spsample}; defaults to "random"}
+
+\item{iter}{passed to \code{spsample}}
+
+\item{...}{reserved for future use}
+}
 \description{
 st_sample_geotools
 }

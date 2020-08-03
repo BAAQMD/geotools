@@ -2,9 +2,29 @@
 % Please edit documentation in R/as_spatial.R
 \name{as_spatial}
 \alias{as_spatial}
-\title{Create a SpatialPointsDataFrame from tabular data}
+\title{as_spatial}
 \usage{
-as_spatial(input_data, coord_vars, crs = CRS(NA_character_), na.rm = TRUE, ...)
+as_spatial(
+  input_data,
+  coord_vars,
+  crs = CRS(NA_character_),
+  na.rm = TRUE,
+  ...,
+  verbose = getOption("verbose")
+)
+}
+\arguments{
+\item{input_data}{tabular data}
+
+\item{coord_vars}{names of variables in \code{input_data} that contain coordinate values}
+
+\item{crs}{as would be returned by \code{CRS()}}
+
+\item{na.rm}{drop any rows with non-finite coordinates}
+
+\item{...}{passed to \code{sp::SpatialPointsDataFrame()}}
+
+\item{verbose}{display messages}
 }
 \description{
 Create a SpatialPointsDataFrame from tabular data

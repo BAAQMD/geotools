@@ -6,8 +6,15 @@
 \usage{
 gContainsOrOverlaps(geom2, geom1, byid = TRUE)
 }
+\arguments{
+\item{geom2}{\verb{Spatial*} object}
+
+\item{geom1}{\verb{Spatial*} object}
+
+\item{byid}{passed to \code{rgeos::gContains()} and \code{rgeos::gOverlaps()}}
+}
 \description{
-Default basis for \code{gFilter} is \code{gContainsOrOverlaps}
+This is the default predicate used by \code{gFilter()}.
 }
 \note{
 Unlike most \code{rgeos} functions, this returns row.names !!

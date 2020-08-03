@@ -4,10 +4,10 @@
 \alias{filter_.SpatialDataFrame}
 \title{Filter (subset) a Spatial*DataFrame object}
 \usage{
-\method{filter_}{SpatialDataFrame}(object, ..., .dots)
+\method{filter_}{SpatialDataFrame}(.data, ..., .dots)
 }
 \arguments{
-\item{object}{a \code{Spatial*DataFrame}}
+\item{.data}{a \code{Spatial*DataFrame}}
 
 \item{...}{see \link{subset}}
 
@@ -18,15 +18,6 @@ a subset of the original \code{Spatial*DataFrame}
 }
 \description{
 Filter (subset) a Spatial*DataFrame object
-}
-\examples{
-library(dplyr)
-library(sp)
-data(meuse, package = "sp")
-coordinates(meuse) <- ~x+y
-df <- filter(meuse, copper > median(copper))
-stopifnot(inherits(df, class(meuse)))
-
 }
 \seealso{
 subset

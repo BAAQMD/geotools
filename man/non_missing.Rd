@@ -6,6 +6,11 @@
 \usage{
 non_missing(spdf, variable)
 }
+\arguments{
+\item{spdf}{\code{Spatial*DataFrame} object}
+
+\item{variable}{name of column}
+}
 \description{
 Return all rows of a Spatial*DataFrame object except those with NA in the given column
 }

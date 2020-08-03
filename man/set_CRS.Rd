@@ -2,17 +2,17 @@
 % Please edit documentation in R/set_CRS.R
 \name{set_CRS}
 \alias{set_CRS}
-\title{Manually set coordinate reference system of a Spatial* object}
+\title{set_CRS}
 \usage{
 set_CRS(x, new_CRS)
 }
 \arguments{
-\item{x}{a \code{Spatial} or \code{sf} object}
+\item{x}{\code{sf} or \verb{Spatial*} object}
 
 \item{new_CRS}{character string or object created via \code{CRS()}}
 }
 \description{
-Manually set coordinate reference system of a Spatial* object
+Manually set coordinate reference system
 }
 \note{
 The inventory package provides a few: \code{WGS84} (lng/lat), \code{UTM10_NAD83}, \code{UTM10_NAD27}, and \code{UTM10_WGS84}. For others, see

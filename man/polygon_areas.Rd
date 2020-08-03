@@ -6,6 +6,9 @@
 \usage{
 polygon_areas(spdf)
 }
+\arguments{
+\item{spdf}{\verb{SpatialPolygons*} object}
+}
 \description{
 Calculate the area of each polygon in a SpatialPolygons* object
 }

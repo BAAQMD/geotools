@@ -1,36 +1,50 @@
 Package: geotools
 Type: Package
 Title: Manipulate and Filter Geospatial Data
-Version: 2020.05.11
+Version: 2020.08.02
 Author: David Holstius
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Provides simplified, user-friendly ways to: filter features spatially (by using a second Spatial object); extract attributes and class members; fortify Spatial data (for ggplot2); promote data frames to Spatial objects; use Google's geocoding API; clip SpatialPolygons (gClip); perform IDW interpolation; and use filter() instead of subset().
 LazyData: TRUE
 Reverse-Depends: inventory
+License: CC0
 Depends:
+    funtools,
+    shptools (>= 2018.05.17),
     sp,
-    rgdal,
-    rgeos,
     sf,
     lazyeval,
-    tidyverse,
-    strtools (>= 2018.05.14),
-    funtools,
-    mapview,
-    ARB (>= 2018.05.16),
-    shptools (>= 2018.05.17)
+    methods,
+    ARB (>= 2018.05.16)
 Imports:
-    dplyr
+    httr,
+    purrr,
+    tibble,
+    rgdal,
+    jsonlite,
+    utils,
+    rgeos,
+    mapview,
+    raster,
+    rlang,
+    stringr,
+    gstat,
+    readr,
+    dplyr,
+    units,
+    ggplot2,
+    plyr
 Suggests:
     leaflet,
-    mapview,
+    leafem,
     TIGER2015,
     SFBA,
-    geosphere,
     testthat
+ReverseDepends:
+    lltools
 Extends:
     sp,
     dplyr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8

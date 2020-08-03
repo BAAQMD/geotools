@@ -2,9 +2,12 @@
 % Please edit documentation in R/meters.R
 \name{meters}
 \alias{meters}
-\title{Create a numeric vector in units of "meters" (distance)}
+\title{meters}
 \usage{
 meters(x)
+}
+\arguments{
+\item{x}{numeric vector}
 }
 \description{
 Create a numeric vector in units of "meters" (distance)

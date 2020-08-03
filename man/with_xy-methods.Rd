@@ -30,6 +30,9 @@ with_xy(spobj)
 
 \S4method{with_xy}{SpatialPixelsDataFrame}(spobj)
 }
+\arguments{
+\item{spobj}{\verb{Spatial*} object}
+}
 \description{
 S4 methods for with_xy
 }

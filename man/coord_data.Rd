@@ -2,10 +2,13 @@
 % Please edit documentation in R/coord_data.R
 \name{coord_data}
 \alias{coord_data}
-\title{Return the coordinates of a Spatial* object as a data.frame}
+\title{Return the coordinates of a Spatial* object as a tibble}
 \usage{
 coord_data(spobj)
 }
+\arguments{
+\item{spobj}{anything for which \code{coordinates(.)} works}
+}
 \description{
-Return the coordinates of a Spatial* object as a data.frame
+Return the coordinates of a Spatial* object as a tibble
 }

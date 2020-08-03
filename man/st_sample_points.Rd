@@ -10,6 +10,8 @@ st_sample_points(geodata, size, verbose = getOption("verbose"))
 \item{geodata}{(sf) most likely polygons or polylines (inside or along which to sample)}
 
 \item{size}{(int) number of points to sample (in or along each feature)}
+
+\item{verbose}{display messages}
 }
 \value{
 \code{sfc} of POINTS, joined back to the original \code{geodata} (i.e., an overlay)

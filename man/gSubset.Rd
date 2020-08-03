@@ -2,9 +2,14 @@
 % Please edit documentation in R/gSubset.R
 \name{gSubset}
 \alias{gSubset}
-\title{Subset a Spatial* object using a SpatialPolygons* object}
+\title{gSubset}
 \usage{
 gSubset(spobj1, spobj2)
+}
+\arguments{
+\item{spobj1}{\verb{Spatial*} object}
+
+\item{spobj2}{\verb{SpatialPolygons*} object}
 }
 \description{
 Subset a Spatial* object using a SpatialPolygons* object

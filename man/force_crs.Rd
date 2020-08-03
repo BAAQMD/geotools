@@ -7,13 +7,13 @@
 force_crs(geodata, crs, ..., verbose = getOption("verbose"))
 }
 \arguments{
-\item{geodata}{(sf or sfc)}
+\item{geodata}{\code{sf} or \code{sfc} object}
+
+\item{crs}{passed to `sf::st_as_sf()``}
 
 \item{...}{further arguments to \code{\link[sf:st_as_sf]{sf::st_as_sf()}}}
 
-\item{verbose}{(logical)}
-
-\item{coords}{(character) names of the (two) columns containing coordinates}
+\item{verbose}{display messages}
 }
 \description{
 Force replacement of CRS while leaving coordinate values unchanged

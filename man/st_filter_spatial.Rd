@@ -20,6 +20,8 @@ st_filter_spatial(
 
 \item{datum}{intermediate datum for projection}
 
+\item{fun}{predicate function; defaults to \code{st_intersection}}
+
 \item{view}{logical; show results in Rstudio viewer?}
 
 \item{verbose}{logical}

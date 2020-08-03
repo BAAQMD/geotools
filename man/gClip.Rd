@@ -6,8 +6,18 @@
 \usage{
 gClip(spobj1, spobj2, ...)
 }
+\arguments{
+\item{spobj1}{\verb{SpatialPolygons*} object}
+
+\item{spobj2}{\verb{SpatialPolygons*} object}
+
+\item{...}{reserved for future use}
+}
 \description{
 Clip one SpatialPolygons* object with another SpatialPolygons* object
+}
+\details{
+\code{spobj1} will be clipped to the boundary of \code{spobj2}.
 }
 \note{
 You're responsible for proper handling of numeric attributes.

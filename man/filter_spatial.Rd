@@ -7,15 +7,15 @@
 filter_spatial(x, y, FUN = NULL, ..., verbose = getOption("verbose"))
 }
 \arguments{
-\item{FUN}{(function) a spatial predicate, for example: \link[rgeos:gIntersects]{gIntersects}}
+\item{x}{(\link[sp:Spatial-class]{Spatial} object) to be filtered}
+
+\item{y}{(\link[sp:Spatial-class]{Spatial} object) to filter with}
+
+\item{FUN}{(function) a spatial predicate, for example: \link[rgeos:pred-binary-gIntersects]{gIntersects}}
 
 \item{...}{further arguments to \code{FUN}}
 
 \item{verbose}{(logical)}
-
-\item{spobj1}{(\link[sp:Spatial]{Spatial} object) to be filtered}
-
-\item{spobj2}{(\link[sp:Spatial]{Spatial} object) to filter with}
 }
 \value{
 (typically) a subset of \code{spobj1}

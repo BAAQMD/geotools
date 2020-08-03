@@ -7,6 +7,9 @@ x and y, and a copy of the coordinates stored in its data.frame}
 \usage{
 with_xy.default(spobj)
 }
+\arguments{
+\item{spobj}{\verb{Spatial*} object}
+}
 \description{
 Return a copy of the Spatial* object with coordnames set to
 x and y, and a copy of the coordinates stored in its data.frame

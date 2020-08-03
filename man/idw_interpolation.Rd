@@ -2,10 +2,18 @@
 % Please edit documentation in R/idw_interpolation.R
 \name{idw_interpolation}
 \alias{idw_interpolation}
-\title{Use IDW to interpolate the given variable (with values and locations found in 'spdf')
-at locations given by "spobj" (typically a SpatialPolygons or SpatialGrid* object).}
+\title{idw_interpolation}
 \usage{
 idw_interpolation(spdf, spobj, variable = "mean", ...)
+}
+\arguments{
+\item{spdf}{\code{Spatial*DataFrame} object (to learn from)}
+
+\item{spobj}{\verb{Spatial*} object (to predict onto)}
+
+\item{variable}{name of variable to interpolate}
+
+\item{...}{passed to \code{gstat::idw()}}
 }
 \description{
 Use IDW to interpolate the given variable (with values and locations found in 'spdf')
