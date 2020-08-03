@@ -9,7 +9,10 @@ test_that("land area preserved", {
     clipped <- gClip(county, coast, verbose = TRUE),
     "attribute variables are assumed to be spatially constant throughout all geometries")
 
-  expect_equal(parse_double(county[["ALAND"]]), 1.91e9, tol = 0.01)
-  expect_equal(st_area(clipped), 1.91e9, tol = 0.01)
+  expect_equal(
+    readr::parse_double(county[["ALAND"]]), 1.91e9, tol = 0.01)
+
+  expect_equal(
+    sf::st_area(clipped), 1.91e9, tol = 0.01)
 
 })
