@@ -1,3 +1,9 @@
+#' pull_fips
+#'
+#' Extract state, county, and tract components from rownames.
+#'
+#' @param geodata geodata with rownames that are FIPS codes
+#'
 #' @export
 pull_fips <- function (geodata) {
   FIDs <- row.names(geodata)
