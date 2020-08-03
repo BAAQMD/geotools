@@ -1,4 +1,12 @@
+#' fortify_xy
+#'
 #' For use with ggplot2 (plotting polygons)
+#'
+#' @note Consider using `ggplot2::geom_sf()` instead.
+#'
+#' @param spobj `Spatial*` object
+#'
+#' @importFrom ggplot2 fortify
 #'
 #' @export
 fortify_xy <- function (spobj) {
