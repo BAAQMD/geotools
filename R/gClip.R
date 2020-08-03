@@ -1,13 +1,21 @@
 #' Clip one SpatialPolygons* object with another SpatialPolygons* object
 #'
+#' @param spobj1 `SpatialPolygons*` object
+#' @param spobj2 `SpatialPolygons*` object
+#' @param ... reserved for future use
+#'
+#' @details `spobj1` will be clipped to the boundary of `spobj2`.
+#'
 #' @note You're responsible for proper handling of numeric attributes.
+#'
+#' @importFrom sf st_as_sf st_transform st_intersection
 #'
 #' @export
 gClip <- function (spobj1, spobj2, ...) {
-  require(sf)
-  sf1 <- st_as_sf(spobj1)
-  sf2 <- st_transform(st_as_sf(spobj2), st_crs(sf1))
-  st_intersection(sf1, sf2)
+  sf1 <- sf::st_as_sf(spobj1)
+  sf2 <- sf::st_transform(st_as_sf(spobj2), st_crs(sf1))
+  clipped <- sf::st_intersection(sf1, sf2)
+  return(clipped)
 }
 #
 # gClip_v1 <- function (spobj1, spobj2, min_area = 1e-6, checkValidity = TRUE, verbose = TRUE) {
