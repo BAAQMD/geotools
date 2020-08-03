@@ -1,7 +1,7 @@
 #' Apply a spatial filter
 #'
-#' @param spobj1 ([Spatial][sp::Spatial] object) to be filtered
-#' @param spobj2 ([Spatial][sp::Spatial] object) to filter with
+#' @param x ([Spatial][sp::Spatial] object) to be filtered
+#' @param y ([Spatial][sp::Spatial] object) to filter with
 #' @param FUN (function) a spatial predicate, for example: [gIntersects][rgeos::gIntersects]
 #' @param ... further arguments to `FUN`
 #' @param verbose (logical)
@@ -9,7 +9,13 @@
 #' @return (typically) a subset of \code{spobj1}
 #'
 #' @export
-filter_spatial <- function (x, y, FUN = NULL, ..., verbose = getOption("verbose")) {
+filter_spatial <- function (
+  x,
+  y,
+  FUN = NULL,
+  ...,
+  verbose = getOption("verbose")
+) {
 
   msg <- function (...) if(isTRUE(verbose)) message("[filter_spatial] ", ...)
 
