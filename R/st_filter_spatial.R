@@ -3,6 +3,7 @@
 #' @param x geometries to filter
 #' @param y geometries to filter by
 #' @param datum intermediate datum for projection
+#' @param fun predicate function; defaults to `st_intersection`
 #' @param view logical; show results in Rstudio viewer?
 #' @param verbose logical
 #'
