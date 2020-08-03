@@ -1,6 +1,6 @@
 #' Filter (subset) a Spatial*DataFrame object
 #'
-#' @param object a \code{Spatial*DataFrame}
+#' @param .data a \code{Spatial*DataFrame}
 #' @param ... see \link{subset}
 #' @param .dots
 #'
@@ -10,19 +10,12 @@
 #' @return a subset of the original \code{Spatial*DataFrame}
 #'
 #' @seealso subset
-#' @examples
-#' library(dplyr)
-#' library(sp)
-#' data(meuse, package = "sp")
-#' coordinates(meuse) <- ~x+y
-#' df <- filter(meuse, copper > median(copper))
-#' stopifnot(inherits(df, class(meuse)))
 #'
 #' @export
-filter_.SpatialDataFrame <- function (object, ..., .dots) {
+filter_.SpatialDataFrame <- function (.data, ..., .dots) {
   dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)
-  masks <- lazyeval::lazy_eval(dots, data = as.data.frame(object@data))
-  subset(object, Reduce(`&&`, masks))
+  masks <- lazyeval::lazy_eval(dots, data = as.data.frame(.data@data))
+  subset(.data, Reduce(`&&`, masks))
 }
 
 filter_.SpatialLinesDataFrame <-
