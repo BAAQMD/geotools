@@ -1,5 +1,21 @@
+#' read_kmz
+#'
+#' Read the first KML file contained in a KMZ file.
+#'
+#' @param kmz_file path
+#' @param kml_file for backwards compatibility
+#' @param crs passed to `reproject()`
+#' @param ... passed to `reproject()`; may include `coordnames`
+#' @param verbose display messages
+#'
 #' @export
-read_kmz <- function (kmz_file, kml_file = NULL, crs = EPSG_4326, ..., verbose = FALSE) {
+read_kmz <- function (
+  kmz_file,
+  kml_file = NULL,
+  crs = EPSG_4326,
+  ...,
+  verbose = FALSE
+) {
 
   tmp_dir <- tempdir()
   unzipped_files <- unzip(kmz_file, exdir = tmp_dir)
@@ -15,7 +31,7 @@ read_kmz <- function (kmz_file, kml_file = NULL, crs = EPSG_4326, ..., verbose =
   dsn <- dirname(kml_file)
   stopifnot(dir.exists(dsn))
 
-  layer_names <- ogrListLayers(kml_file)
+  layer_names <- rgdal::ogrListLayers(kml_file)
   stopifnot(length(layer_names) > 0)
 
   import_layer <- function (layer_name) {
@@ -29,7 +45,9 @@ read_kmz <- function (kmz_file, kml_file = NULL, crs = EPSG_4326, ..., verbose =
 
   reprojected <-
     combined_layers %>%
-    reproject(crs)
+    reproject(
+      new_CRS = crs,
+      ...)
 
   return(reprojected)
 
