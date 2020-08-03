@@ -31,11 +31,6 @@
 #'
 NULL
 
-#' @name datums
-#' @rdname datums
-#' @export
-NULL
-
 #' EPSG 4326
 #'
 #' @docType data
