@@ -3,6 +3,7 @@
 #' @importFrom dplyr mutate
 #' @importFrom purrr map
 #' @rdname st_overlay-methods
+#' @export
 st_overlay.geodata.raster <- function (
   geodata,
   object,
@@ -35,9 +36,9 @@ st_overlay.geodata.raster <- function (
 
 }
 
-setClass(
-  "RasterStack",
-  package = "raster")
+# setClass(
+#   "RasterStack",
+#   package = "raster")
 
 #' Overlay spatial data onto some kind of (other) spatial data.
 #'
