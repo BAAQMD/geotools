@@ -29,3 +29,6 @@ UTM10 <-
 
 CA_ALBERS_NAD83 <-
   sp::CRS("+init=epsg:3310")
+
+WEB_MERCATOR <-
+  sf::st_crs(3857)
