@@ -23,16 +23,20 @@ ggplot_tileset <- function (
 ) {
 
   msg <- function (...) if(isTRUE(verbose)) message("[ggplot_tileset] ", ...)
+  msg("hello")
+
+  envelope <-
+    st_envelope(envelope)
+
+  msg("buffering envelope")
+  buffered_envelope <-
+    st_buffer(st_transform(envelope, NAD83_UTM10), dist = 10e3)
 
   tile_grid <-
     slippymath::bbox_to_tile_grid(
-      sf::st_bbox(sf::st_transform(st_envelope(envelope), WGS84_GPS)),
+      sf::st_bbox(sf::st_transform(buffered_envelope, WGS84_GPS)),
       zoom = zoom,
       max_tiles = max_tiles)
-
-  if (isTRUE(verbose)) {
-    print(tile_grid)
-  }
 
   if (stringr::str_detect(url, "mapbox")) {
     url <- stringr::str_c(
@@ -78,7 +82,6 @@ ggplot_tileset <- function (
       url = url,
       z = tile_grid$zoom)
 
-  msg("composing tile_raster")
   tile_raster <-
     cacher::cached(
       "ggplot_tileset",
@@ -88,9 +91,9 @@ ggplot_tileset <- function (
       digest::digest(tile_images, algo = "md5"),
       verbose = FALSE) %or%
     {
-      slippymath::compose_tile_grid(
-        tile_grid,
-        tile_images)
+      msg("composing tile_raster")
+      composed <- slippymath::compose_tile_grid(tile_grid, tile_images)
+      raster::readAll(composed)
     }
 
   #png_path <- "tile_raster.png"
