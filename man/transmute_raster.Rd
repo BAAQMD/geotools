@@ -7,9 +7,13 @@
 transmute_raster(raster_object, f, verbose = getOption("verbose"))
 }
 \arguments{
+\item{raster_object}{multi-layer \href{raster::Raster-class}{Raster*} object}
+
 \item{f}{formula}
 
-\item{verbose}{}
+\item{verbose}{logical}
+
+\item{...}{ignored}
 }
 \value{
 

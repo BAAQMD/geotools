@@ -1,12 +1,12 @@
 #' overlay_raster
 #'
-#' @param input_geodata
-#' @param raster_brick
-#' @param fun
-#' @param progress
-#' @param unit
-#' @param ...
-#' @param verbose
+#' @param input_geodata `sf` or `sfc` object
+#' @param raster_brick [raster::Raster-class]
+#' @param fun name of summarizing function, like "mean"
+#' @param progress logical
+#' @param unit character (optional), like "ug/m^3"
+#' @param ... passed to [exactextractr::exact_extract()]
+#' @param verbose logical
 #'
 #' @importFrom exactextractr exact_extract
 #'

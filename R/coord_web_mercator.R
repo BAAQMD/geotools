@@ -1,10 +1,10 @@
 #' coord_web_mercator
 #'
-#' @param envelope
-#' @param xlim
-#' @param ylim
+#' @param envelope sf or sfc
+#' @param xlim numeric (two values), if `envelope` isn't provided
+#' @param ylim numeric (two values), if `envelope` isn't provided
 #'
-#' @return
+#' @return output of `coord_sf(...)`
 #' @export
 #'
 coord_web_mercator <- function (envelope = NULL, xlim = NULL, ylim = NULL) {

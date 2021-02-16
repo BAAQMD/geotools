@@ -16,6 +16,7 @@ Depends:
     lazyeval,
     methods
 Remotes:
+    github::BAAQMD/cacher,
     github::BAAQMD/funtools,
     github::BAAQMD/shptools,
     github::BAAQMD/ARB
@@ -24,11 +25,13 @@ Imports:
     purrr,
     tibble,
     rgdal,
+    exactextractr,
     jsonlite,
     utils,
     rgeos,
     mapview,
     raster,
+    glue,
     rlang,
     stringr,
     gstat,
@@ -37,6 +40,12 @@ Imports:
     units,
     ggplot2,
     plyr,
+    cacher,
+    xfun,
+    ncmeta,
+    png,
+    slippymath,
+    digest,
     ARB (>= 2018.05.16)
 Suggests:
     leaflet,

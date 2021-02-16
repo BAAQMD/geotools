@@ -7,11 +7,18 @@
 write_GeoTIFF(raster_obj, ..., suffix = "names", overwrite = TRUE)
 }
 \arguments{
-\item{...}{}
+\item{raster_obj}{\href{raster::Raster-class}{Raster*} object}
+
+\item{...}{passed to \code{\link[=write_raster]{write_raster()}}}
 }
 \value{
-
+result of \code{write_raster()}
 }
 \description{
-Thin wrapper around \code{\link[raster:writeRaster]{raster::writeRaster()}}
+Thin wrapper around \code{\link[=write_raster]{write_raster()}}
+}
+\seealso{
+\itemize{
+\item \code{\link[=write_raster]{write_raster()}}
+}
 }

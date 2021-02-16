@@ -7,10 +7,14 @@
 coord_web_mercator(envelope = NULL, xlim = NULL, ylim = NULL)
 }
 \arguments{
-\item{ylim}{}
+\item{envelope}{sf or sfc}
+
+\item{xlim}{numeric (two values), if \code{envelope} isn't provided}
+
+\item{ylim}{numeric (two values), if \code{envelope} isn't provided}
 }
 \value{
-
+output of \code{coord_sf(...)}
 }
 \description{
 coord_web_mercator

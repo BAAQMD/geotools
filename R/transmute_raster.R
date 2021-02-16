@@ -39,10 +39,10 @@
 
 #' transmute_raster
 #'
-#' @param raster_object
+#' @param raster_object multi-layer [Raster*](raster::Raster-class) object
 #' @param f formula
-#' @param ...
-#' @param verbose
+#' @param ... ignored
+#' @param verbose logical
 #'
 #' @return
 #' @export

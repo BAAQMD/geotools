@@ -1,10 +1,10 @@
 #' bind_rasters
 #'
-#' @param x
-#' @param ...
-#' @param fill
-#' @param outfile
-#' @param verbose
+#' @param x RasterLayer
+#' @param ... one or more RasterLayers
+#' @param fill ignored
+#' @param outfile character
+#' @param verbose logical
 #'
 #' @return
 #' @export

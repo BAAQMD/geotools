@@ -7,10 +7,18 @@
 write_raster(raster_obj, path, ..., format = "raster", overwrite = TRUE)
 }
 \arguments{
-\item{overwrite}{}
+\item{raster_obj}{\href{raster::Raster-class}{Raster*} object}
+
+\item{path}{character}
+
+\item{...}{passed to \code{\link[raster:writeRaster]{raster::writeRaster()}}}
+
+\item{format}{character (defaults to "raster"); see \code{\link[raster:writeRaster]{raster::writeRaster()}}}
+
+\item{overwrite}{logical}
 }
 \value{
-
+result of \code{\link[raster:writeRaster]{raster::writeRaster()}}, most likely a handle to an on-disk raster
 }
 \description{
 write_raster

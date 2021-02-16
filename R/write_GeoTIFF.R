@@ -1,14 +1,16 @@
 #' write_GeoTIFF
 #'
-#' Thin wrapper around [raster::writeRaster()]
+#' Thin wrapper around [write_raster()]
 #'
-#' @param raster_obj
-#' @param ...
+#' @param raster_obj [Raster*](raster::Raster-class) object
+#' @param ... passed to [write_raster()]
 #'
-#' @return
+#' @seealso
+#' - [write_raster()]
+#'
+#' @return result of `write_raster()`
 #' @export
 #'
-#' @examples
 write_GeoTIFF <- function (
   raster_obj,
   ...,
@@ -16,11 +18,14 @@ write_GeoTIFF <- function (
   overwrite = TRUE
 ) {
 
-  raster::writeRaster(
+  written <-
+  write_raster(
     raster_obj,
     ...,
     format = "GTiff",
     suffix = suffix,
     overwrite = overwrite)
+
+  return(written)
 
 }

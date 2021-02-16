@@ -15,7 +15,19 @@ overlay_raster(
 )
 }
 \arguments{
-\item{verbose}{}
+\item{input_geodata}{\code{sf} or \code{sfc} object}
+
+\item{raster_brick}{\link[raster:Raster-classes]{raster::Raster}}
+
+\item{fun}{name of summarizing function, like "mean"}
+
+\item{progress}{logical}
+
+\item{unit}{character (optional), like "ug/m^3"}
+
+\item{...}{passed to \code{\link[exactextractr:exact_extract]{exactextractr::exact_extract()}}}
+
+\item{verbose}{logical}
 }
 \value{
 

@@ -7,11 +7,15 @@
 st_stencil(cutout, dist = 100000, projected_crs = NAD83_UTM10)
 }
 \arguments{
-\item{projected_crs}{}
+\item{cutout}{polygonal \code{sf} object}
+
+\item{dist}{buffer size for stencil}
+
+\item{projected_crs}{something to work in, like \code{NAD83_UTM10}, that makes sense for your particular use case}
 }
 \value{
-
+polygon with cutout cut out
 }
 \description{
-st_stencil
+Returns a "stencil" (a polygon larger than \code{cutout}) with \code{cutout} subtracted from it.
 }

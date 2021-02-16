@@ -14,16 +14,20 @@ cut_raster(
 )
 }
 \arguments{
-\item{raster_layer}{}
+\item{raster_layer}{\href{raster::Raster-class}{RasterLayer} object}
 
-\item{breaks}{}
+\item{breaks}{passed to \code{\link[=cut]{cut()}}}
 
-\item{include.lowest}{}
+\item{include.lowest}{passed to \code{\link[=cut]{cut()}}}
 
-\item{...}{}
+\item{...}{passed to \code{\link[=cut]{cut()}}}
+
+\item{na.rm}{logical; passed to \code{\link[=cut]{cut()}}}
+
+\item{verbose}{logical}
 }
 \value{
-
+a new \href{raster::Raster-class}{RasterLayer} object, of the same dimensions, etc., with values cut accordingly
 }
 \description{
 cut_raster

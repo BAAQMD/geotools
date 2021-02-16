@@ -13,7 +13,15 @@ bind_rasters(
 )
 }
 \arguments{
-\item{verbose}{}
+\item{x}{RasterLayer}
+
+\item{...}{one or more RasterLayers}
+
+\item{fill}{ignored}
+
+\item{outfile}{character}
+
+\item{verbose}{logical}
 }
 \value{
 

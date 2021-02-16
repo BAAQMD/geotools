@@ -13,7 +13,15 @@ scale_northing(
 )
 }
 \arguments{
-\item{labels}{}
+\item{name}{character}
+
+\item{...}{passed to \code{\link[ggplot2:scale_continuous]{ggplot2::scale_x_continuous()}}}
+
+\item{unit}{character, like "km"}
+
+\item{expand}{like that returned by \code{ggplot2::expansion()}}
+
+\item{labels}{function that generates labels}
 }
 \value{
 ggplot2 scale object

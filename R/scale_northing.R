@@ -1,10 +1,10 @@
 #' scale_northing
 #'
-#' @param name
-#' @param ...
-#' @param unit
-#' @param expand
-#' @param labels
+#' @param name character
+#' @param ... passed to [ggplot2::scale_x_continuous()]
+#' @param unit character, like "km"
+#' @param expand like that returned by `ggplot2::expansion()`
+#' @param labels function that generates labels
 #'
 #' @return ggplot2 scale object
 #' @export

@@ -1,12 +1,12 @@
 #' write_raster
 #'
-#' @param raster_obj
-#' @param path
-#' @param ...
-#' @param format
-#' @param overwrite
+#' @param raster_obj [Raster*](raster::Raster-class) object
+#' @param path character
+#' @param ... passed to [raster::writeRaster()]
+#' @param format character (defaults to "raster"); see [raster::writeRaster()]
+#' @param overwrite logical
 #'
-#' @return
+#' @return result of [raster::writeRaster()], most likely a handle to an on-disk raster
 #' @export
 #'
 write_raster <- function (
