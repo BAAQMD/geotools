@@ -16,8 +16,9 @@ Depends:
     lazyeval,
     methods
 Remotes:
-  github::BAAQMD/funtools,
-  github::BAAQMD/shptools
+    github::BAAQMD/funtools,
+    github::BAAQMD/shptools,
+    github::BAAQMD/ARB
 Imports:
     httr,
     purrr,
