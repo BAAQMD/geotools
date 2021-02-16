@@ -7,7 +7,26 @@
 #' @export
 #'
 st_extent <- function (x, ...) {
-  bb <- sf::st_bbox(x)
-  coords <- bb[c("xmin", "xmax", "ymin", "ymax")]
-  return(raster::extent(coords, ...))
+
+  if (is.numeric(x)) {
+
+    coords <- c(x, ...)
+    if (isFALSE(length(coords) == 4)) {
+      stop("[st_extent] four values are needed")
+    }
+
+  } else {
+
+    bb <- sf::st_bbox(x)
+    coords <- bb[c("xmin", "xmax", "ymin", "ymax")]
+
+  }
+
+  extent <-
+    raster::extent(
+      coords,
+      ...)
+
+  return(extent)
+
 }
