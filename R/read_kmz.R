@@ -17,6 +17,19 @@ read_kmz <- function (
   verbose = FALSE
 ) {
 
+  msg <- function (...) if(isTRUE(verbose)) message("[read_kmz] ", ...)
+
+  if (isFALSE(file.exists(kmz_file))) {
+    if (isTRUE(RCurl::url.exists(kmz_file))) {
+      msg("url exists; downloading")
+      url <- kmz_file
+      url_md5 <- digest::digest(url, "md5")
+      destfile <- tempfile(pattern = url_md5, fileext = ".kmz")
+      downloader::download(url, destfile)
+      kmz_file <- destfile
+    }
+  }
+
   tmp_dir <- tempdir()
   unzipped_files <- unzip(kmz_file, exdir = tmp_dir)
 
@@ -35,7 +48,14 @@ read_kmz <- function (
   stopifnot(length(layer_names) > 0)
 
   import_layer <- function (layer_name) {
-    readOGR(dsn = kml_file, layer = layer_name, stringsAsFactors = FALSE, ...)
+    msg("importing: ", layer_name)
+
+    #
+    # FIXME: add multi-layer logic using `st_layers(kml_file)`
+    # (See https://mitchellgritts.com/posts/load-kml-and-kmz-files-into-r/)
+    #
+
+    sf::read_sf(kml_file)
   }
 
   combined_layers <-
