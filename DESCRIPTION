@@ -1,7 +1,7 @@
 Package: geotools
 Type: Package
 Title: Manipulate and Filter Geospatial Data
-Version: 2020.10.20
+Version: 2021.02.16
 Author: David Holstius
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Provides simplified, user-friendly ways to: filter features spatially (by using a second Spatial object); extract attributes and class members; fortify Spatial data (for ggplot2); promote data frames to Spatial objects; use Google's geocoding API; clip SpatialPolygons (gClip); perform IDW interpolation; and use filter() instead of subset().
@@ -15,6 +15,9 @@ Depends:
     sf,
     lazyeval,
     methods
+Remotes:
+  github::BAAQMD/funtools,
+  github::BAAQMD/shptools
 Imports:
     httr,
     purrr,
