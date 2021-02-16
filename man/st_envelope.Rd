@@ -4,13 +4,13 @@
 \alias{st_envelope}
 \title{st_envelope}
 \usage{
-st_envelope(obj, ...)
+st_envelope(x, ..., crs = NULL)
 }
 \arguments{
-\item{obj}{simple feature or simple feature set, passed to \code{\link[sf:st_bbox]{sf::st_bbox()}}}
+\item{x}{either a spatial object, or a vector of four coordinates \code{c(xmin, xmax, ymin, ymax)}}
 
-\item{...}{passed tp \link[sf:st_bbox]{sf::st_bbox}}
+\item{...}{passed to \link[sf:st_bbox]{sf::st_bbox} or \code{\link[sf:st_as_sf]{sf::st_as_sf()}}}
 }
 \description{
-Return bounding box of \code{obj} as a polygon
+Construct a rectangular polygon enveloping \code{x}
 }
