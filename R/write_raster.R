@@ -17,13 +17,14 @@ write_raster <- function (
   overwrite = TRUE
 ) {
 
-  raster::writeRaster(
-    raster_obj,
-    filename = path,
-    format = format,
-    overwrite = overwrite,
-    ...)
+  written <-
+    raster::writeRaster(
+      raster_obj,
+      filename = path,
+      format = format,
+      overwrite = overwrite,
+      ...)
 
-  return(raster_obj)
+  return(written)
 
 }
