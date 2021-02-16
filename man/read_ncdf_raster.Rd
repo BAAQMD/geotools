@@ -4,7 +4,13 @@
 \alias{read_ncdf_raster}
 \title{read_ncdf_raster}
 \usage{
-read_ncdf_raster(path, ..., verbose = getOption("verbose", default = FALSE))
+read_ncdf_raster(
+  path,
+  ...,
+  layer_name = NULL,
+  units = "m",
+  verbose = getOption("verbose", default = FALSE)
+)
 }
 \arguments{
 \item{path}{character}
