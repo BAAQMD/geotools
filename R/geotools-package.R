@@ -11,7 +11,6 @@
 #' @import purrr
 #' @import tibble
 #' @import stringr
-#' @import rlang
 #'
 #' @import rgdal
 #' @import sp
