@@ -11,17 +11,15 @@
 #' @import purrr
 #' @import tibble
 #' @import stringr
-#'
 #' @import rgdal
 #' @import sp
 #' @import sf
-#'
 #' @import funtools
 #' @import shptools
-#'
 #' @import units
-#'
 #' @import ARB
+#'
+#' @importFrom mapview mapview
 #'
 #' @importFrom methods as slot slotNames
 #' @importFrom utils download.file unzip
