@@ -26,6 +26,8 @@
 #'
 #' @importFrom funtools rbind_list
 #'
+#' @importFrom mapview mapview
+#'
 NULL
 
 #' EPSG 4326
