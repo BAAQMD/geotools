@@ -13,7 +13,6 @@ Depends:
     shptools (>= 2018.05.17),
     sp,
     sf,
-    lazyeval,
     methods
 Remotes:
     github::BAAQMD/cacher,
@@ -46,7 +45,8 @@ Imports:
     png,
     slippymath,
     digest,
-    ARB (>= 2018.05.16)
+    ARB (>= 2018.05.16),
+    lazyeval
 Suggests:
     leaflet,
     leafem,
