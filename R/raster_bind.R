@@ -1,15 +1,17 @@
-#' bind_rasters
+#' raster_bind
 #'
-#' @param x RasterLayer
-#' @param ... one or more RasterLayers
+#' @param rst RasterLayer
+#' @param ... zero or more additional RasterLayers
 #' @param fill ignored
 #' @param outfile character
 #' @param verbose logical
 #'
+#' @aliases bind_rasters
+#'
 #' @return
 #' @export
-bind_rasters <- function (
-  x,
+raster_bind <- function (
+  rst,
   ...,
   fill = NA,
   outfile = NULL,
@@ -19,7 +21,7 @@ bind_rasters <- function (
   msg <- function (...) if(isTRUE(verbose)) message("[bind_rasters] ", ...)
 
   raster_list <-
-    append(x, list(...))
+    append(rst, list(...))
 
   names(raster_list) <-
     map(raster_list, names)

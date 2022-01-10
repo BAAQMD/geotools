@@ -1,4 +1,4 @@
-#' overlay_raster
+#' raster_overlay
 #'
 #' @param input_geodata `sf` or `sfc` object
 #' @param raster_brick [raster::Raster-class]
@@ -12,7 +12,7 @@
 #'
 #' @return
 #' @export
-overlay_raster <- function(
+raster_overlay <- function(
   input_geodata,
   raster_brick,
   fun = "mean",
@@ -23,7 +23,7 @@ overlay_raster <- function(
 ) {
 
   msg <- function (...) if(isTRUE(verbose)) {
-    message("[overlay_raster] ", ...)
+    message("[raster_overlay] ", ...)
   }
 
   extracted_data <-

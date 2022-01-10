@@ -1,6 +1,6 @@
-#' cut_raster
+#' raster_cut
 #'
-#' @param raster_layer [RasterLayer](raster::Raster-class) object
+#' @param rst [RasterLayer](raster::Raster-class) object
 #' @param breaks passed to [cut()]
 #' @param include.lowest passed to [cut()]
 #' @param ... passed to [cut()]
@@ -10,8 +10,8 @@
 #' @return a new [RasterLayer](raster::Raster-class) object, of the same dimensions, etc., with values cut accordingly
 #' @export
 #'
-cut_raster <- function (
-  raster_layer,
+raster_cut <- function (
+  rst,
   breaks,
   include.lowest = TRUE,
   ...,
@@ -21,7 +21,7 @@ cut_raster <- function (
 
   cut_values <-
     cut(
-      raster::values(raster_layer),
+      raster::values(rst),
       breaks = breaks,
       na.rm = na.rm,
       ...)
@@ -41,7 +41,7 @@ cut_raster <- function (
     attr_data$label <- break_names
   }
 
-  cut_layer <- raster::raster(raster_layer)
+  cut_layer <- raster::raster(rst)
   raster::values(cut_layer) <- as.integer(cut_values)
   cut_layer <- raster::as.factor(cut_layer)
   levels(cut_layer) <- attr_data # see ?raster::factorValues
