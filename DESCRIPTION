@@ -58,6 +58,6 @@ ReverseDepends:
 Extends:
     sp,
     dplyr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
