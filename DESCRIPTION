@@ -1,7 +1,7 @@
 Package: geotools
 Type: Package
 Title: Manipulate and Filter Geospatial Data
-Version: 2022.01.10
+Version: 2022.01.13
 Author: David Holstius
 Maintainer: David Holstius <dholstius@baaqmd.gov>
 Description: Provides simplified, user-friendly ways to: filter features spatially (by using a second Spatial object); extract attributes and class members; fortify Spatial data (for ggplot2); promote data frames to Spatial objects; use Google's geocoding API; clip SpatialPolygons (gClip); perform IDW interpolation; and use filter() instead of subset().
