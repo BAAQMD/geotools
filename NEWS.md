@@ -8,6 +8,7 @@ Deleted:
 
 Defunct:
 - `merge` methods for `Spatial*DataFrame`
+- `polygon_areas()` made obsolete by `st_area()`
 
 Deprecated:
 - `fortify()` made obsolete by `sf::geom_sf()`
