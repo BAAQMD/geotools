@@ -6,6 +6,8 @@
 #'
 #' @importFrom ncmeta nc_atts
 #' @importFrom xfun file_ext
+#' @importFrom purrr quietly
+#' @importFrom terra crs ext
 #'
 #' @return `SpatRaster` object
 #' @export
