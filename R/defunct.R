@@ -29,6 +29,8 @@ polygon_areas <- function (spdf) {
   sapply(spdf@polygons, function(x) x@area / 1e6)
 }
 
+#' merge_SpatialDataFrame
+#'
 #' @return an object of the same class as \code{x}
 #'
 #' @export
