@@ -11,6 +11,7 @@ Defunct:
 - `polygon_areas()` made obsolete by `st_area()`
 
 Deprecated:
+- S3 `filter` methods for `Spatial*DataFrame`
 - S3 `mutate` methods for `Spatial*DataFrame`
 - `fortify()` made obsolete by `sf::geom_sf()`
 - `reproject()` superseded by `sf::st_transform()`
