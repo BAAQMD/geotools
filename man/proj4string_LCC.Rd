@@ -12,6 +12,8 @@ proj4string_LCC(
   x_0 = 0,
   y_0 = 0,
   units = "m",
+  datum = "NAD83",
+  ellps = "GRS80",
   ...,
   verbose = getOption("verbose", default = FALSE)
 )

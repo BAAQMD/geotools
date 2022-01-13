@@ -20,6 +20,7 @@ Remotes:
     github::BAAQMD/shptools,
     github::BAAQMD/ARB
 Imports:
+    dplyr,
     httr,
     purrr,
     tibble,
@@ -35,10 +36,8 @@ Imports:
     stringr,
     gstat,
     readr,
-    dplyr,
     units,
     ggplot2,
-    plyr,
     cacher,
     xfun,
     ncmeta,

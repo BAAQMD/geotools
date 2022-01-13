@@ -8,7 +8,7 @@ read_ncdf_raster(
   path,
   ...,
   layer_name = NULL,
-  units = "m",
+  crs = NULL,
   verbose = getOption("verbose", default = FALSE)
 )
 }
@@ -20,7 +20,7 @@ read_ncdf_raster(
 \item{verbose}{logical}
 }
 \value{
-\code{RasterLayer} object
+\code{SpatRaster} object
 }
 \description{
 read_ncdf_raster
