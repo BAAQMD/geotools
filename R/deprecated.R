@@ -7,9 +7,11 @@
 #' @param spobj `Spatial*` object
 #'
 #' @importFrom ggplot2 fortify
+#' @importFrom plyr rename
 #'
 #' @export
 fortify_xy <- function (spobj) {
+  .Deprecated("geom_sf", msg = "use geom_sf(data = ...) instead")
   spobj@data$id <- rownames(spobj@data)
   fortified <- ggplot2::fortify(spobj, region="id")
   renamed <- plyr::rename(fortified, list(long="x", lat="y"))
