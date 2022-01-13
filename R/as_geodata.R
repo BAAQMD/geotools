@@ -6,6 +6,8 @@
 #' @param ... further arguments to [sf::st_as_sf()]
 #' @param verbose logical
 #'
+#' @importFrom sf st_crs st_as_sf
+#'
 #' @export
 as_geodata <- function (input_data, coords, crs, ..., verbose = TRUE) {
 
@@ -14,10 +16,10 @@ as_geodata <- function (input_data, coords, crs, ..., verbose = TRUE) {
   # TODO: handle missing coord vars (autodetect using `tbltools::find_vars()`)
 
   if (is.numeric(crs)) {
-    crs <- st_crs(crs)
+    crs <- sf::st_crs(crs)
   }
 
-  geodata <- st_as_sf(input_data, coords = coords, crs = crs, ...)
+  geodata <- sf::st_as_sf(input_data, coords = coords, crs = crs, ...)
 
   return(geodata)
 
