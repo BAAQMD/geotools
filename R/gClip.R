@@ -8,12 +8,12 @@
 #'
 #' @note You're responsible for proper handling of numeric attributes.
 #'
-#' @importFrom sf st_as_sf st_transform st_intersection
+#' @importFrom sf st_as_sf st_transform st_intersection st_crs
 #'
 #' @export
 gClip <- function (spobj1, spobj2, ...) {
   sf1 <- sf::st_as_sf(spobj1)
-  sf2 <- sf::st_transform(st_as_sf(spobj2), st_crs(sf1))
+  sf2 <- sf::st_transform(sf::st_as_sf(spobj2), sf::st_crs(sf1))
   clipped <- sf::st_intersection(sf1, sf2)
   return(clipped)
 }
