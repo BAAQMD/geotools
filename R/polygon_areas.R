@@ -4,5 +4,6 @@
 #'
 #' @export
 polygon_areas <- function (spdf) {
+  .Defunct("st_area")
   sapply(spdf@polygons, function(x) x@area / 1e6)
 }

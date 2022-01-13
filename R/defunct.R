@@ -19,6 +19,16 @@ sp_centroid <- function (spobj, ...) {
 #' @param by character
 #' @param \dots further arguments, as in \link{merge} generally (e.g. \code{sort})
 #'
+#' Calculate the area of each polygon in a SpatialPolygons* object
+#'
+#' @param spdf `SpatialPolygons*` object
+#'
+#' @export
+polygon_areas <- function (spdf) {
+  .Defunct("st_area")
+  sapply(spdf@polygons, function(x) x@area / 1e6)
+}
+
 #' @return an object of the same class as \code{x}
 #'
 #' @export
