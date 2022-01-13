@@ -24,6 +24,8 @@ proj4string_LCC <- function (
   x_0 = 0.0,
   y_0 = 0.0,
   units = "m",
+  datum = "NAD83",
+  ellps = "GRS80",
   ...,
   verbose = getOption("verbose", default = FALSE)
 ) {
@@ -48,6 +50,8 @@ proj4string_LCC <- function (
       "y_0={y_0}") %>%
     c(dot_assignments) %>%
     c("units={units}",
+      "datum={datum}",
+      "ellps={ellps}",
       "no_defs") %>%
     str_c("+", .) %>%
     str_c(., collapse = " ")

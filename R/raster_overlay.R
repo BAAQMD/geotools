@@ -29,7 +29,7 @@ raster_overlay <- function(
   extracted_data <-
     as_tibble(
       exactextractr::exact_extract(
-        raster_brick,
+        raster::brick(raster_brick),
         input_geodata,
         fun = fun,
         progress = progress,
