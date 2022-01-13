@@ -7,13 +7,13 @@
 #' @importFrom ncmeta nc_atts
 #' @importFrom xfun file_ext
 #'
-#' @return `RasterLayer` object
+#' @return `SpatRaster` object
 #' @export
 read_ncdf_raster <- function (
   path,
   ...,
   layer_name = NULL,
-  units = "m",
+  crs = NULL,
   verbose = getOption("verbose", default = FALSE)
 ) {
 
@@ -27,51 +27,60 @@ read_ncdf_raster <- function (
     ncmeta::nc_atts(path) %>%
     pull(value)
 
-  # if (isTRUE(verbose)) {
-  #   print(ncdf_globals)
-  # }
-
-  ncdf_proj4string <-
-    with(ncdf_globals, {
-      proj4string_LCC(
-        lon_0 = XCENT,
-        lat_0 = YCENT,
-        lat_1 = P_ALP,
-        lat_2 = P_BET,
-        x_0   = 0, #-XORIG, # + (XCELL / 2),
-        y_0   = 0, #-YORIG, # + (YCELL / 2),
-        a     = 6.37e6, # NWS84 spheroid: radius 6,370 km
-        b     = 6.37e6, # NWS84 spheroid: radius 6,370 km
-        units = "m",
-        verbose = verbose)
-    })
-
-  ncdf_bb <-
-    with(
-      ncdf_globals,
-      c(xmin = XORIG,
-        xmax = XORIG + XCELL * NCOLS,
-        ymin = YORIG,
-        ymax = YORIG + YCELL * NROWS))
-
-
-  quieted <- purrr::quietly(raster::raster)(path, ...)
+  quieted <- purrr::quietly(terra::rast)(path, ...)
   msg(quieted$output)
-  raster_layer <- quieted$result
+  rst_obj <- quieted$result
 
-  raster::crs(raster_layer) <- ncdf_proj4string
-  raster::extent(raster_layer) <- st_extent(ncdf_bb)
+  if (is.null(crs)) {
 
-  # mapview::mapview(st_cast(st_envelope(ncdf_bb, crs = ncdf_proj4string), "MULTILINESTRING")) + mapview::mapview(raster_layer)
+    ncdf_proj4string <-
+      with(ncdf_globals, {
+        proj4string_LCC(
+          lon_0 = XCENT,
+          lat_0 = YCENT,
+          lat_1 = P_ALP,
+          lat_2 = P_BET,
+          x_0   = 0, #-XORIG, # + (XCELL / 2),
+          y_0   = 0, #-YORIG, # + (YCELL / 2),
+          a     = 6.37e6, # NWS84 spheroid: radius 6,370 km
+          b     = 6.37e6, # NWS84 spheroid: radius 6,370 km
+          #units = "m",
+          verbose = verbose)
+      })
+
+    terra::crs(rst_obj) <-
+      ncdf_proj4string
+
+  } else {
+
+    terra::crs(rst_obj) <- crs
+
+  }
+
+  terra::ext(rst_obj) <- local({
+
+    ncdf_bb <-
+      with(
+        ncdf_globals,
+        c(xmin = XORIG,
+          xmax = XORIG + XCELL * NCOLS,
+          ymin = YORIG,
+          ymax = YORIG + YCELL * NROWS))
+
+    terra::ext(ncdf_bb)
+
+  })
+
+  # mapview::mapview(st_cast(st_envelope(ncdf_bb, crs = ncdf_proj4string), "MULTILINESTRING")) + mapview::mapview(rst_obj)
 
   if (isFALSE(is.null(layer_name))) {
     msg("setting names to: ", layer_name)
-    names(raster_layer) <- layer_name
+    names(rst_obj) <- layer_name
   }
 
-  attr(raster_layer, "ncdf_globals") <-
+  attr(rst_obj, "ncdf_globals") <-
     ncdf_globals
 
-  return(raster_layer)
+  return(rst_obj)
 
 }
