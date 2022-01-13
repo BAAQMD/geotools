@@ -6,6 +6,8 @@
 #' @param ... further arguments to `FUN`
 #' @param verbose (logical)
 #'
+#' @importFrom sf st_as_sf st_transform st_union st_crs
+#'
 #' @return (typically) a subset of \code{spobj1}
 #'
 #' @export
@@ -24,7 +26,7 @@ filter_spatial <- function (
   if (is_sf(x)) {
     if (!is_sf(y)) {
       msg("first converting via st_as_sf()")
-      y <- st_as_sf(y)
+      y <- sf::st_as_sf(y)
     }
     filter_spatial_sf(x, y, FUN = FUN, ..., verbose = verbose)
   } else {
@@ -45,7 +47,7 @@ filter_spatial_sf <- function (sf1, sf2, FUN = NULL, ..., verbose = FALSE) {
     msg("using (st_contains | st_overlaps)")
   }
 
-  region <- st_transform(st_union(sf2), st_crs(sf1))
+  region <- sf::st_transform(sf::st_union(sf2), sf::st_crs(sf1))
   suppressMessages(contained <- reduce(st_contains(region, sf1), union))
   suppressMessages(overlapped <- reduce(st_overlaps(region, sf1), union))
   i <- union(contained, overlapped)
