@@ -6,7 +6,7 @@
 \usage{
 raster_overlay(
   input_geodata,
-  raster_brick,
+  rst,
   fun = "mean",
   progress = TRUE,
   unit = NULL,
@@ -17,8 +17,6 @@ raster_overlay(
 \arguments{
 \item{input_geodata}{\code{sf} or \code{sfc} object}
 
-\item{raster_brick}{\link[raster:Raster-classes]{raster::Raster}}
-
 \item{fun}{name of summarizing function, like "mean"}
 
 \item{progress}{logical}
@@ -28,6 +26,8 @@ raster_overlay(
 \item{...}{passed to \code{\link[exactextractr:exact_extract]{exactextractr::exact_extract()}}}
 
 \item{verbose}{logical}
+
+\item{raster_brick}{\link[raster:Raster-classes]{raster::Raster}}
 }
 \value{
 

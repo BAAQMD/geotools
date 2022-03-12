@@ -14,7 +14,7 @@
 #' @export
 raster_overlay <- function(
   input_geodata,
-  raster_brick,
+  rst,
   fun = "mean",
   progress = TRUE,
   unit = NULL,
@@ -29,13 +29,13 @@ raster_overlay <- function(
   extracted_data <-
     as_tibble(
       exactextractr::exact_extract(
-        raster::brick(raster_brick),
+        raster::stack(rst),
         input_geodata,
         fun = fun,
         progress = progress,
         ...)) %>%
     set_names(
-      names(raster_brick))
+      names(rst))
 
   try(detach("package:raster"), silent = TRUE)
 
