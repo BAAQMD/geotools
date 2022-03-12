@@ -4,7 +4,6 @@
 #' @return a `tibble`
 #' @export
 drop_geometry <- function (geodata) {
-  #st_geometry(geodata) <- NULL
-  #return(as_tibble(geodata))
+  .Deprecated("st_drop_geometry")
   return(sf::st_drop_geometry(geodata))
 }
