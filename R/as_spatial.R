@@ -24,47 +24,17 @@ as_spatial <- function (
 
   msg <- function (...) if (isTRUE(verbose)) message("[as_spatial] ", ...)
 
-  coord_vars <-
-    dplyr::select_vars(
-      names(input_data),
-      coord_vars)
-
-  coord_data <-
-    dplyr::select(
-      input_data,
-      coord_vars)
-
   if (isTRUE(na.rm)) {
-
-    coord_data <-
-      dplyr::filter_at(
-        coord_data,
-        vars(coord_vars),
-        all_vars(is.finite(.)))
-
-    attr_data <-
-      dplyr::filter_at(
-        input_data,
-        vars(coord_vars),
-        all_vars(is.finite(.)))
-
-  } else {
-
-    coord_data <- coord_data # no change
-    attr_data <- input_data # no change, just rename
-
+    input_data <- filter(input_data, if_all(coord_vars, is.finite))
   }
 
   geodata <-
-    sp::SpatialPointsDataFrame(
-      coord_data,
-      attr_data,
-      ...) %>%
-    set_CRS(crs)
+    sf::st_as_sf(
+      input_data,
+      coords = coord_vars,
+      crs = crs,
+      ...)
 
-  coordnames(geodata) <-
-    coord_vars
-
-  return(geodata)
+  return(as(geodata, "Spatial"))
 
 }

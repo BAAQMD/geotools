@@ -34,6 +34,6 @@ test_that("na.rm = FALSE", {
       input_data %>%
       as_spatial(coord_vars = c("fac_lng", "fac_lat"), crs = WGS84, na.rm = FALSE),
 
-    "NA values in coordinates")
+    "missing values in coordinates not allowed")
 
 })
