@@ -5,45 +5,69 @@
 #' @param spobj geodata
 #' @param dsn output path; defaults to the current working directory
 #' @param layer name of layer to write
-#' @param pretty passed to `jsonlite::toJSON()`
-#' @param digits passed to `jsonlite::toJSON()`
-#' @param ... passed to `rgdal::writeOGR()`
-#' @param overwrite_layer passed to `rgdal::writeOGR()`
+#' @param ... passed to [sf::st_write()]
+#' @param overwrite (logical)
 #' @param verbose display messages
 #'
-#' @importFrom rgdal writeOGR
+#' @importFrom here here
+#' @importFrom sf st_write st_transform st_as_sf
+#' @importFrom fs path_ext file_exists file_delete path_rel
 #' @importFrom jsonlite fromJSON toJSON
 #'
 #' @export
 write_geojson <- function (
-  spobj,
-  dsn = getwd(),
-  layer = deparse(substitute(spobj)),
+  object,
+  dsn = NULL,
+  layer = NULL,
+  ...,
+  crs = 4326,
+  overwrite = TRUE,
   pretty = TRUE,
   digits = 6,
-  ...,
-  overwrite_layer = TRUE,
-  verbose = TRUE
+  append = FALSE,
+  verbose = getOption("verbose", default = FALSE)
 ) {
 
-  outfile <- file.path(dsn, str_c(layer, ".geojson"))
-  if (verbose) message("Writing to ", outfile)
+  msg <- function (...) if(isTRUE(verbose)) message("[write_geojson] ", ...)
 
-  # Use rgdal's GeoJSON driver to write to a tempfile
-  tmp_file <- tempfile()
-  success <- rgdal::writeOGR(
-    spobj,
-    dsn = tmp_file,
-    layer = "",
+  if (is.null(dsn)) {
+    dsn <- getwd()
+    if (is.null(layer)) {
+      layer <- deparse(substitute(object))
+    }
+    path <- fs::path(dsn, layer)
+  } else {
+    path <- dsn
+  }
+
+  fs::path_ext(path) <- ".geojson"
+
+  if (fs::file_exists(path)) {
+    if (isTRUE(overwrite)) {
+      fs::file_delete(path) # FIXME: move out of the way, don't delete (in case of failure)
+    } else {
+      stop("[write_geojson] overwrite is FALSE and file exists: ", path)
+    }
+  }
+
+  msg("writing ", nrow(object), " features to ",
+      fs::path_rel(path, here::here()))
+
+  sf::st_write(
+    sf::st_transform(
+      sf::st_as_sf(object),
+      crs = crs),
+    path,
     ...,
-    driver = "GeoJSON",
-    overwrite_layer = overwrite_layer)
+    append = append)
 
-  # Read the JSON back in; tidy it; and write it to a final location
-  reread <- jsonlite::fromJSON(tmp_file)
-  tidied <- jsonlite::toJSON(reread, pretty = pretty, digits = digits)
-  cat(tidied, file = outfile)
+  if (isTRUE(pretty) || isTRUE(is.finite(digits))) {
+    # Read the JSON back in; tidy it; and write it to a final location
+    reread <- jsonlite::fromJSON(path)
+    tidied <- jsonlite::toJSON(reread, pretty = pretty, digits = digits)
+    cat(tidied, file = path)
+  }
 
-  return(invisible(spobj)) # for chaining
+  return(path)
 
 }
