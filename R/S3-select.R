@@ -1,9 +1,10 @@
 #' @importFrom dplyr select_vars
 #'
 select_SpatialData <- function (.data, ...) {
-  j <- dplyr::select_vars(names(.data), ...)
-  selected <- .data[, j]
-  names(selected) <- names(j)
+  selected <- dplyr::select(sf::st_as_sf(.data), ...)
+  if (inherits(.data, "Spatial")) {
+    selected <- as(selected, "Spatial")
+  }
   return(selected)
 }
 

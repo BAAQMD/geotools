@@ -8,25 +8,6 @@ drop_geometry <- function (geodata) {
   return(sf::st_drop_geometry(geodata))
 }
 
-#' @importFrom dplyr mutate
-#'
-#' @export
-mutate_SpatialData <- function (.data, ...) {
-  .Deprecated(msg = "upgrade code to use `sf` instead of `sp`")
-  df <- .data@data
-  .data@data <- dplyr::mutate(df, ...)
-  return(.data)
-}
-
-#' @export
-mutate.SpatialPointsDataFrame <- mutate_SpatialData
-
-#' @export
-mutate.SpatialLinesDataFrame <- mutate_SpatialData
-
-#' @export
-mutate.SpatialPolygonsDataFrame <- mutate_SpatialData
-
 #' fortify_xy
 #'
 #' For use with ggplot2 (plotting polygons)
