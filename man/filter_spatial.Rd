@@ -4,7 +4,14 @@
 \alias{filter_spatial}
 \title{Apply a spatial filter}
 \usage{
-filter_spatial(x, y, FUN = NULL, ..., verbose = getOption("verbose"))
+filter_spatial(
+  x,
+  y,
+  FUN = NULL,
+  crs = NULL,
+  ...,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
 \item{x}{(\link[sp:Spatial-class]{Spatial} object) to be filtered}
