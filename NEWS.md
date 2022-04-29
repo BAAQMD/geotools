@@ -1,5 +1,23 @@
 # NEWS
 
+## Changes in version 2022-04-29
+
+- `mapview::mapviewOptions(fgb = FALSE)` now set on load
+    - See https://stackoverflow.com/questions/65485747/mapview-points-not-showing-in-r
+- Greatly simplified some older methods that accept `Spatial*` objects
+   - Use `sf` methods under hood, converting via `st_as_sf()` first
+   - Result still inherits from `Spatial` if first argument does
+   - Retaining these for backwards-compatibility till `rdgal` expires in 2023
+- Changes to S3 methods for `Spatial*DataFrame`
+   - `mutate()` is un-deprecated
+   - `filter()` and `select()` now rely on `sf` methods under the hood
+- All tests now succeed
+    - Some empty tests were removed
+- Added quasi-experimental raster methods
+    - These rely on `terra`
+    - `raster_sum()`, a fast and cached way of summing rasters, optionally with weights
+    - `raster_digest()`, which hashes result of `terra::values()`
+
 ## Changes in version 2022-01-13
 
 Deleted:
