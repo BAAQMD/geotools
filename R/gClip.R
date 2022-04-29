@@ -15,5 +15,6 @@ gClip <- function (spobj1, spobj2, ...) {
   sf1 <- sf::st_as_sf(spobj1)
   sf2 <- sf::st_transform(sf::st_as_sf(spobj2), sf::st_crs(sf1))
   clipped <- sf::st_intersection(sf1, sf2)
+  clipped <- sf::st_make_valid(clipped)
   return(clipped)
 }
