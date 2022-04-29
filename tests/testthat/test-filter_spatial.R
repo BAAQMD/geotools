@@ -1,20 +1,26 @@
 context("filter_spatial")
 
-SFBA_tracts_WGS84 <-
-  TIGER2015::TIGER2015_SFBA_tracts %>%
-  reproject(
-    new_CRS = WGS84)
+# See https://cran.r-project.org/web/packages/sp/vignettes/CRS_warnings.html
+options("rgdal_show_exportToProj4_warnings" = "none")
+
+expect_warning(
+  SFBA_tracts_WGS84 <-
+    TIGER2015::TIGER2015_SFBA_tracts %>%
+    reproject(
+      new_CRS = WGS84),
+  "is deprecated")
 
 #
 # Tests with `ALA_county_WGS84`
 #
-
-ALA_county_WGS84 <-
-  TIGER2015::TIGER2015_CA_counties %>%
-  subset(
-    str_detect(.$GEOID, "^06001")) %>%
-  reproject(
-    new_CRS = WGS84)
+expect_warning(
+  ALA_county_WGS84 <-
+    TIGER2015::TIGER2015_CA_counties %>%
+    subset(
+      str_detect(.$GEOID, "^06001")) %>%
+    reproject(
+      new_CRS = WGS84),
+  "is deprecated")
 
 test_that("Alameda County (sp)", {
 
@@ -49,14 +55,16 @@ test_that("Richmond CARE Impact Region", {
 
   # More complicated: some tracts are "contained"; some tracts "overlap"
 
-  CARE_Richmond_WGS84 <-
-    CARE::CARE_region_geodata %>%
-    filter(
-      CARE_name == "Richmond") %>%
-    filter(
-      CARE_designation == "impact") %>%
-    reproject(
-      new_CRS = WGS84)
+  expect_warning(
+    CARE_Richmond_WGS84 <-
+      CARE::CARE_region_geodata %>%
+      filter(
+        CARE_name == "Richmond") %>%
+      filter(
+        CARE_designation == "impact") %>%
+      reproject(
+        new_CRS = WGS84),
+    "is deprecated")
 
   spobj1 <- SFBA_tracts_WGS84
   spobj2 <- CARE_Richmond_WGS84
@@ -83,14 +91,16 @@ test_that("Richmond CARE Impact Region", {
 
 test_that("Vallejo CARE Impact Region", {
 
-  CARE_Vallejo_WGS84 <-
-    CARE::CARE_region_geodata %>%
-    filter(
-      CARE_name == "Vallejo") %>%
-    filter(
-      CARE_designation == "impact") %>%
-    reproject(
-      new_CRS = WGS84)
+  expect_warning(
+    CARE_Vallejo_WGS84 <-
+      CARE::CARE_region_geodata %>%
+      filter(
+        CARE_name == "Vallejo") %>%
+      filter(
+        CARE_designation == "impact") %>%
+      reproject(
+        new_CRS = WGS84),
+    "is deprecated")
 
   spobj1 <- SFBA_tracts_WGS84
   spobj2 <- CARE_Vallejo_WGS84
