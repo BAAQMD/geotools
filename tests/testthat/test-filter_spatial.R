@@ -28,14 +28,6 @@ test_that("Alameda County (sp)", {
   expect_equal(
     nrow(test_tracts), 361)
 
-  expect_success(
-    mapview::mapview(
-      test_tracts) %>%
-      leafem::addFeatures(
-        ALA_county_WGS84,
-        fill = FALSE,
-        color = "red"))
-
 })
 
 test_that("Alameda County (sf)", {
@@ -45,8 +37,6 @@ test_that("Alameda County (sf)", {
   sf1 <- st_as_sf(SFBA_tracts_WGS84)
   sf2 <- st_as_sf(ALA_county_WGS84)
   test_tracts <- filter_spatial(sf1, sf2)
-
-  mapview::mapview(test_tracts) %>% addFeatures(ALA_county_WGS84, fill = FALSE, color = "red")
   expect_equal(nrow(test_tracts), 361)
 
 })
