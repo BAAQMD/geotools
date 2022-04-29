@@ -1,3 +1,6 @@
+# See https://cran.r-project.org/web/packages/sp/vignettes/CRS_warnings.html
+options("rgdal_show_exportToProj4_warnings" = "none")
+
 #' Apply a spatial filter
 #'
 #' @param x ([Spatial][sp::Spatial] object) to be filtered
@@ -96,8 +99,8 @@ filter_spatial_sp <- function (spobj1, spobj2, FUN = NULL, ..., verbose = FALSE)
 
   }
 
-  proj1 <- proj4string(spobj1)
-  proj2 <- proj4string(spobj2)
+  proj1 <- suppress_warning(proj4string(spobj1), "CRS object has comment")
+  proj2 <- suppress_warning(proj4string(spobj2), "CRS object has comment")
 
   if (is.na(proj1) && is.na(proj2)) {
     warning("both proj4strings are NA")
