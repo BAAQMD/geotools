@@ -8,7 +8,8 @@
 #' @export
 coordinates_to_columns <- function (geodata, coords, ..., verbose = getOption("verbose")) {
 
-  xy_coords <- st_coordinates(geodata)[,1:2]
+  d <- length(coords)
+  xy_coords <- matrix(st_coordinates(geodata)[,1:d], ncol = d)
   coord_data <- set_names(as.data.frame(xy_coords), coords)
   bind_cols(geodata, coord_data)
 
