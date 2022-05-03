@@ -5,32 +5,30 @@
 \title{write_geojson}
 \usage{
 write_geojson(
-  spobj,
-  dsn = getwd(),
-  layer = deparse(substitute(spobj)),
+  object,
+  dsn = NULL,
+  layer = NULL,
+  ...,
+  crs = 4326,
+  overwrite = TRUE,
   pretty = TRUE,
   digits = 6,
-  ...,
-  overwrite_layer = TRUE,
-  verbose = TRUE
+  append = FALSE,
+  verbose = getOption("verbose", default = FALSE)
 )
 }
 \arguments{
-\item{spobj}{geodata}
-
 \item{dsn}{output path; defaults to the current working directory}
 
 \item{layer}{name of layer to write}
 
-\item{pretty}{passed to \code{jsonlite::toJSON()}}
+\item{...}{passed to \code{\link[sf:st_write]{sf::st_write()}}}
 
-\item{digits}{passed to \code{jsonlite::toJSON()}}
-
-\item{...}{passed to \code{rgdal::writeOGR()}}
-
-\item{overwrite_layer}{passed to \code{rgdal::writeOGR()}}
+\item{overwrite}{(logical)}
 
 \item{verbose}{display messages}
+
+\item{spobj}{geodata}
 }
 \description{
 Write a layer to a GeoJSON file.
