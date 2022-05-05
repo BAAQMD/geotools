@@ -8,6 +8,7 @@
 #' @importFrom progress progress_bar
 #' @importFrom stringr str_glue
 #'
+#' @export
 raster_sum <- function (
   layer_list,
   weights = NULL,
