@@ -24,9 +24,6 @@ raster_bind(
 
 \item{verbose}{logical}
 }
-\value{
-
-}
 \description{
 raster_bind
 }

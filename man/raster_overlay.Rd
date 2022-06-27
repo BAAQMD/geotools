@@ -29,9 +29,6 @@ raster_overlay(
 
 \item{raster_brick}{\link[raster:Raster-classes]{raster::Raster}}
 }
-\value{
-
-}
 \description{
 raster_overlay
 }

@@ -15,9 +15,6 @@ transmute_raster(raster_object, f, verbose = getOption("verbose"))
 
 \item{...}{ignored}
 }
-\value{
-
-}
 \description{
 transmute_raster
 }
