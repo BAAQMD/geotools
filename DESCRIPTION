@@ -18,10 +18,15 @@ Remotes:
     github::BAAQMD/cacher,
     github::BAAQMD/funtools,
     github::BAAQMD/shptools,
+    github::BAAQMD/strtools,
+    github::BAAQMD/unittools,
     github::BAAQMD/ARB
 Imports:
     here,
     assertive.numbers,
+    ggmap,
+    ggspatial,
+    librarian,
     dplyr,
     httr,
     purrr,
@@ -39,7 +44,7 @@ Imports:
     stringr,
     gstat,
     readr,
-    units,
+    unittools,
     ggplot2,
     cacher,
     xfun,
@@ -60,6 +65,6 @@ ReverseDepends:
 Extends:
     sp,
     dplyr
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
