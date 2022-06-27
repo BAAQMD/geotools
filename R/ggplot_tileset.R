@@ -5,6 +5,7 @@
 #' @importFrom httr parse_url GET status_code
 #' @importFrom png writePNG
 #' @importFrom glue glue
+#' @importFrom here here
 #' @importFrom cacher cached `%or%`
 #' @importFrom sf st_bbox st_transform
 #' @importFrom slippymath bbox_to_tile_grid compose_tile_grid

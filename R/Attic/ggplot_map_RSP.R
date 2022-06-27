@@ -13,6 +13,7 @@
 #'
 #' @note Cloned from PM25-major-facility-modeling on 2020-09-11
 #'
+#' @importFrom here here
 #' @export
 #'
 ggplot_map_RSP <- function (

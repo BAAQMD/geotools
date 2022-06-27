@@ -56,6 +56,7 @@ raster_sum <- function (
 #'
 #' @describeIn raster_sum uncached variant
 #'
+#' @importFrom here here
 #' @importFrom purrr map map2
 #' @importFrom terra rast weighted.mean writeRaster
 #' @importFrom fs file_exists path_ext_set file_delete
