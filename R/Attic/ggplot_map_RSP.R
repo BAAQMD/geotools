@@ -14,6 +14,13 @@
 #' @note Cloned from PM25-major-facility-modeling on 2020-09-11
 #'
 #' @importFrom here here
+#' @importFrom ggmap ggmap get_googlemap get_stamenmap
+#' @importFrom ggspatial annotation_scale
+#' @importFrom ggplot2 expansion coord_sf ggplot geom_sf
+#' @importFrom sf st_buffer st_transform st_as_sfc st_set_crs st_crs st_coordinates st_centroid st_bbox st_intersection
+#' @importFrom strtools str_csv
+#' @importFrom librarian is_valid_url
+#'
 #' @export
 #'
 ggplot_map_RSP <- function (
