@@ -51,7 +51,6 @@ read_kmz <- function (
   stopifnot(dir.exists(dsn))
 
   layer_names <-
-    #rgdal::ogrListLayers(kml_file)
     sf::st_layers(kml_file)$name
 
   stopifnot(length(layer_names) > 0)

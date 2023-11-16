@@ -4,10 +4,10 @@
 \alias{read_kmz}
 \title{read_kmz}
 \usage{
-read_kmz(kmz_file, kml_file = NULL, crs = EPSG_4326, ..., verbose = FALSE)
+read_kmz(kmz_path, kml_file = NULL, crs = WGS84_CRS, ..., verbose = FALSE)
 }
 \arguments{
-\item{kmz_file}{path}
+\item{kmz_path}{path}
 
 \item{kml_file}{for backwards compatibility}
 

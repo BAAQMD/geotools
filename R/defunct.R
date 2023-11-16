@@ -131,8 +131,6 @@ reproject <- function (
 
   .Defunct("sf::st_transform")
 
-  require(rgdal)
-
   if (is.character(new_CRS)) {
     new_CRS <- CRS(new_CRS)
   }
