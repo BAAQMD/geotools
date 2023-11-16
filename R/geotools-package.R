@@ -17,7 +17,6 @@
 #' @import funtools
 #' @import shptools
 #' @import units
-#' @import ARB
 #'
 #' @importFrom mapview mapview
 #'
