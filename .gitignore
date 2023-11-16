@@ -3,3 +3,4 @@
 .RData
 .remake
 .DS_Store
+*.zip
