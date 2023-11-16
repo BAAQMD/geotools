@@ -13,6 +13,8 @@ test_that("land area preserved", {
     readr::parse_double(county[["ALAND"]]), 1.91e9, tol = 0.01)
 
   expect_equal(
-    sf::st_area(clipped), 1.91e9, tol = 0.01)
+    sf::st_area(clipped), # in square meters
+    units::set_units(1.91e9, "m^2"),
+    tol = 0.01)
 
 })
