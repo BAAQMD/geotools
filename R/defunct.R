@@ -14,9 +14,6 @@
 #' @export
 filter_.SpatialDataFrame <- function (.data, ..., .dots) {
   .Defunct(msg = "upgrade code to use `sf` instead of `sp`")
-  dots <- lazyeval::all_dots(.dots, ..., all_named = TRUE)
-  masks <- lazyeval::lazy_eval(dots, data = as.data.frame(.data@data))
-  subset(.data, Reduce(`&&`, masks))
 }
 
 filter_.SpatialLinesDataFrame <-
@@ -34,14 +31,11 @@ filter_.SpatialPolygonsDataFrame <-
 #' Extract the coordinates, as a simple vector, of the centroid of a Spatial* object.
 #'
 #' @param spobj `Spatial*` object
-#' @param ... passed to `gCentroid()`
-#'
-#' @importFrom rgeos gCentroid
+#' @param ... passed to [rgeos::gCentroid()]
 #'
 #' @export
 sp_centroid <- function (spobj, ...) {
-  .Defunct(msg = "Try sf::st_centroid() or sp::gCentroid() instead.")
-  spobj %>% rgeos::gCentroid(...) %>% coordinates %>% as.vector
+  .Defunct("sf::st_centroid()")
 }
 
 #' Merge generic
@@ -57,7 +51,6 @@ sp_centroid <- function (spobj, ...) {
 #' @export
 polygon_areas <- function (spdf) {
   .Defunct("st_area")
-  sapply(spdf@polygons, function(x) x@area / 1e6)
 }
 
 #' merge_SpatialDataFrame
@@ -66,28 +59,7 @@ polygon_areas <- function (spdf) {
 #'
 #' @export
 merge_SpatialDataFrame <- function (x, y, by, ...) {
-
   .Defunct("sp::merge")
-
-  if (!identical(row.names(x), row.names(x@data)))
-    warning("row.names(x) and row.names(x@data) are not identical")
-  if (by == "row.names")
-    stop("merge_SpatialDataFrame doesn't support merging by row.names (yet)")
-
-  merged_data <- merge(x@data, y, by = by, ...)
-  i <- merged_data[[by]]
-  row.names(merged_data) <- i
-  merged_geom <- geometry(x)[i, ]
-
-  spobj_constructor <- get(class(x))
-  stopifnot(is.function(spobj_constructor))
-  new_obj <- spobj_constructor(merged_geom, merged_data)
-
-  stopifnot(identical(
-    row.names(new_obj),
-    row.names(merged_geom)))
-
-  return(new_obj)
 
 }
 
@@ -128,33 +100,7 @@ reproject <- function (
     new_CRS = EPSG_4326,
     new_coordnames = c("lng", "lat")
 ) {
-
   .Defunct("sf::st_transform")
-
-  if (is.character(new_CRS)) {
-    new_CRS <- CRS(new_CRS)
-  }
-
-  if (inherits(x, "sf")) {
-
-    reprojected <- sf::st_transform(x, new_CRS)
-    if (!missing(new_coordnames)) {
-      warning("Not handling new_coordnames since your data is `sf` rather than `Spatial`")
-    }
-
-  } else if (inherits(x, "Spatial")) {
-
-    reprojected <- sp::spTransform(x, new_CRS)
-    if (!missing(new_coordnames)) {
-      sp::coordnames(reprojected) <- new_coordnames
-    }
-
-  } else {
-    stop("Don't know how to handle that class of object")
-  }
-
-  return(reprojected)
-
 }
 
 clip_and_trim <- function (rst, lower = .Machine$double.eps, upper = Inf) {
@@ -180,42 +126,7 @@ force_crs <- function (
     ...,
     verbose = getOption("verbose")
 ) {
-
   .Defunct("sf::st_set_crs()")
-
-  msg <- function (...) if(isTRUE(verbose)) message("[force_crs] ", ...)
-
-  # Only used in this function, temporarily.
-  coord_vars <- c(".x_coord", ".y_coord")
-
-  #
-  # These are all helper function from `geotools`:
-  #
-  # - is_geodata()
-  # - coordinates_to_columns()
-  # - drop_geometry()
-  #
-  stopifnot(is_geodata(geodata))
-  fortified <- coordinates_to_columns(geodata, coord_vars)
-  naive <- sf::st_drop_geometry(fortified)
-
-  # Coerce it back into an `sf` object
-  #
-  # FIXME: not designed to handle the case where `geodata` inherits from `sfc`
-  #
-  if (inherits(geodata, "sfc")) {
-    warning("[force_crs] casting back to `sf`, not `sfc`")
-  }
-
-  coerced <-
-    sf::st_as_sf(
-      naive,
-      coords = coord_vars,
-      crs = crs,
-      ...)
-
-  return(coerced)
-
 }
 
 #' gContainsOrOverlaps
