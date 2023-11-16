@@ -47,7 +47,7 @@ reproject <- function (
   new_coordnames = c("lng", "lat")
 ) {
 
-  .Deprecated("st_transform")
+  .Defunct("sf::st_transform")
 
   require(rgdal)
 
