@@ -58,7 +58,6 @@ Suggests:
     slippymath,
     ncmeta,
     jsonlite,
-    rgeos,
     leaflet,
     leafem,
     TIGER2015,
