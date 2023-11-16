@@ -199,7 +199,7 @@ force_crs <- function (
   #
   stopifnot(is_geodata(geodata))
   fortified <- coordinates_to_columns(geodata, coord_vars)
-  naive <- drop_geometry(fortified)
+  naive <- sf::st_drop_geometry(fortified)
 
   # Coerce it back into an `sf` object
   #
