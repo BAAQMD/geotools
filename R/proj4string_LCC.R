@@ -15,7 +15,8 @@
 #' - https://proj.org/operations/projections/lcc.html
 #'
 #' @examples
-#' proj4string_LCC(lat_1=30, lat_2=60, lat_0=37, lon_0=-120.5, y_0=16000, x_0=220000, a=6.37e6, b=6.37e6, units="km", verbose=TRUE)
+#' proj4string_LCC(lat_1=30, lat_2=60, lat_0=37, lon_0=120.5, y_0=16000, x_0=220000, a=6.37e6, b=6.37e6, units="km", verbose=TRUE)
+#' proj4string_LCC(lat_1=30, lat_2=60, lat_0=37, lon_0=120.5, y_0=28000, x_0=233000, a=6.37e6, b=6.37e6, units="km", verbose=TRUE)
 proj4string_LCC <- function (
   lon_0 = 0.0,
   lat_0 = 0.0,
