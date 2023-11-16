@@ -261,3 +261,19 @@ gContainsOrOverlaps <- function (geom2, geom1, byid = TRUE) {
 
 }
 
+#' gSubset
+#'
+#' Subset a Spatial* object using a SpatialPolygons* object
+#'
+#' @param spobj1 `Spatial*` object
+#' @param spobj2 `SpatialPolygons*` object
+#'
+#' @importFrom rgeos gIntersects
+#'
+#' @export
+gSubset <- function (spobj1, spobj2) {
+  .Defunct("filter_spatial() or sf::st_filter()")
+  i <- which(as.logical(rgeos::gIntersects(spobj2, spobj1, byid=TRUE)))
+  return(spobj1[i,])
+}
+
