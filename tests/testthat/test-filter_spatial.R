@@ -1,9 +1,4 @@
-context("filter_spatial")
-
-# See https://cran.r-project.org/web/packages/sp/vignettes/CRS_warnings.html
-options("rgdal_show_exportToProj4_warnings" = "none")
-
-test_that("San Francisco", {
+test_that("filter_spatial", {
 
   # Simple test: only containment (shouldn't be any "overlapping")
 
