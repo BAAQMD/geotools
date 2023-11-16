@@ -42,9 +42,9 @@ write_geojson <- function (
 
   fs::path_ext(path) <- ".geojson"
 
-  if (fs::file_exists(path)) {
+  if (file.exists(path)) {
     if (isTRUE(overwrite)) {
-      fs::file_delete(path) # FIXME: move out of the way, don't delete (in case of failure)
+      file.remove(path) # FIXME: move out of the way, don't delete (in case of failure)
     } else {
       stop("[write_geojson] overwrite is FALSE and file exists: ", path)
     }

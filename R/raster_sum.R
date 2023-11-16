@@ -108,9 +108,9 @@ raster_sum__ <- function (
     path <- file.path(cache_dir, fs::path_ext_set(key, ".grd"))
 
     if (cache == "rm") {
-      if (fs::file_exists(path)) {
+      if (file.exists(path)) {
         msg("deleting: ", path)
-        fs::file_delete(path)
+        file.remove(path)
       }
     }
 
