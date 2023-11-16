@@ -23,7 +23,6 @@ Remotes:
     github::BAAQMD/ARB
 Imports:
     here,
-    assertive.numbers,
     ggmap,
     ggspatial,
     librarian,
@@ -65,6 +64,6 @@ ReverseDepends:
 Extends:
     sp,
     dplyr
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8

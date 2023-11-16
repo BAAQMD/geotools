@@ -44,6 +44,6 @@ raster_sum__
 }
 \section{Functions}{
 \itemize{
-\item \code{raster_sum__}: uncached variant
-}}
+\item \code{raster_sum__()}: uncached variant
 
+}}

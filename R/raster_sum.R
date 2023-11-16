@@ -60,7 +60,6 @@ raster_sum <- function (
 #' @importFrom purrr map map2
 #' @importFrom terra rast weighted.mean writeRaster
 #' @importFrom fs file_exists path_ext_set file_delete
-#' @importFrom assertive.numbers assert_all_are_positive assert_all_are_whole_numbers
 #'
 raster_sum__ <- function (
   layer_list,
@@ -142,8 +141,8 @@ raster_sum__ <- function (
 
     # Don't update the progress bar
 
-    assertive.numbers::assert_all_are_positive(chunk_size)
-    assertive.numbers::assert_all_are_whole_numbers(chunk_size)
+    stopifnot(all(chunk_size > 0))
+    stopifnot(all(chunk_size == round(chunk_size)))
 
     # Assign layers to "chunks" of size no more than n=chunk_size
     n_chunks <- ceiling(n_layers / chunk_size)
