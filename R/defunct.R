@@ -109,49 +109,52 @@ setMethod(
   c("SpatialLinesDataFrame", "data.frame"),
   merge_SpatialLinesDataFrame)
 
-#' Apply a spatial filter
+#' reproject
 #'
-#' @param x ([Spatial][sp::Spatial] object) to be filtered
-#' @param y ([Spatial][sp::Spatial] object) to filter with
-#' @param FUN (function) a spatial predicate, for example: [gIntersects][rgeos::gIntersects]
-#' @param ... further arguments to `FUN`
-#' @param verbose (logical)
+#' Reproject/transform geodata.
 #'
-#' @importFrom sf st_as_sf st_transform st_union st_crs st_within
+#' @param x a `Spatial*` or `sf` object
+#' @param new_CRS integer, `CRS`, or `st_crs` object
+#' @param new_coordnames character vector
 #'
-#' @return (typically) a subset of \code{spobj1}
+#' @details
+#' If `x` is a `Spatial` object (from the `sp` package), `new_CRS` must be a `CRS` object; otherwise, pass an integer (EPSG code) or `st_crs()` result.
+#'
+#' @return An object of the same class as `x`, but reprojected to the new coordinate system, and with new coordnames.
 #'
 #' @export
-filter_spatial <- function (
+reproject <- function (
     x,
-    y,
-    FUN = NULL,
-    crs = NULL,
-    ...,
-    verbose = getOption("verbose")
+    new_CRS = EPSG_4326,
+    new_coordnames = c("lng", "lat")
 ) {
 
-  msg <- function (...) if (isTRUE(verbose)) message("[filter_spatial] ", ...)
+  .Defunct("sf::st_transform")
 
-  if (is.null(FUN)) {
-    FUN <- sf::st_within
+  require(rgdal)
+
+  if (is.character(new_CRS)) {
+    new_CRS <- CRS(new_CRS)
   }
 
-  if (is.null(crs)) {
-    crs <- sf::st_crs(x)
+  if (inherits(x, "sf")) {
+
+    reprojected <- sf::st_transform(x, new_CRS)
+    if (!missing(new_coordnames)) {
+      warning("Not handling new_coordnames since your data is `sf` rather than `Spatial`")
+    }
+
+  } else if (inherits(x, "Spatial")) {
+
+    reprojected <- sp::spTransform(x, new_CRS)
+    if (!missing(new_coordnames)) {
+      sp::coordnames(reprojected) <- new_coordnames
+    }
+
+  } else {
+    stop("Don't know how to handle that class of object")
   }
 
-  filtered <-
-    sf::st_filter(
-      sf::st_as_sf(x),
-      sf::st_transform(sf::st_as_sf(y), crs),
-      .predicate = FUN,
-      ...)
-
-  if (inherits(x, "Spatial")) {
-    filtered <- as(filtered, "Spatial")
-  }
-
-  return(filtered)
+  return(reprojected)
 
 }
