@@ -276,4 +276,3 @@ gSubset <- function (spobj1, spobj2) {
   i <- which(as.logical(rgeos::gIntersects(spobj2, spobj1, byid=TRUE)))
   return(spobj1[i,])
 }
-
