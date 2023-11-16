@@ -44,7 +44,6 @@
 #' @param ... ignored
 #' @param verbose logical
 #'
-#' @return
 #' @export
 transmute_raster <- function (
   raster_object,

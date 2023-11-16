@@ -8,7 +8,6 @@
 #'
 #' @aliases bind_rasters
 #'
-#' @return
 #' @export
 raster_bind <- function (
   rst,

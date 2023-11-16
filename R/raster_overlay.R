@@ -10,7 +10,6 @@
 #'
 #' @importFrom exactextractr exact_extract
 #'
-#' @return
 #' @export
 raster_overlay <- function(
   input_geodata,
