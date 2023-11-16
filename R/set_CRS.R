@@ -8,10 +8,10 @@
 #' @importFrom sf st_crs
 #' @importFrom sp CRS proj4string
 #'
-#' @note The inventory package provides a few: `WGS84` (lng/lat), `UTM10_NAD83`, `UTM10_NAD27`, and `UTM10_WGS84`. For others, see
-#'
 #' @export
 set_CRS <- function (x, new_CRS) {
+
+  .Defunct("sf::st_set_crs()")
 
   if (!inherits(new_CRS, "CRS")) {
     new_CRS <- sp::CRS(new_CRS)
