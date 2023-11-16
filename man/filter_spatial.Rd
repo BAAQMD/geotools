@@ -2,31 +2,26 @@
 % Please edit documentation in R/filter_spatial.R
 \name{filter_spatial}
 \alias{filter_spatial}
-\title{Apply a spatial filter}
+\title{filter_spatial}
 \usage{
-filter_spatial(
-  x,
-  y,
-  FUN = NULL,
-  crs = NULL,
-  ...,
-  verbose = getOption("verbose")
-)
+filter_spatial(x, y, FUN = st_intersects, ..., verbose = getOption("verbose"))
 }
 \arguments{
-\item{x}{(\link[sp:Spatial-class]{Spatial} object) to be filtered}
+\item{x}{object to be filtered}
 
-\item{y}{(\link[sp:Spatial-class]{Spatial} object) to filter with}
+\item{y}{object to filter with}
 
-\item{FUN}{(function) a spatial predicate, for example: \link[rgeos:pred-binary-gIntersects]{gIntersects}}
+\item{FUN}{(function) a spatial predicate, for example: \code{\link[sf:geos_binary_pred]{sf::st_intersects()}}}
 
-\item{...}{further arguments to \code{FUN}}
+\item{...}{further arguments to \code{\link[sf:st_join]{sf::st_filter()}}}
 
 \item{verbose}{(logical)}
 }
 \value{
-(typically) a subset of \code{spobj1}
+(typically) a subset of \code{x}
 }
 \description{
-Apply a spatial filter
+A slightly more convenient version of \code{\link[sf:st_join]{sf::st_filter()}}. It does the
+job of reprojecting the second object to the same CRS as the first,
+if that's needed.
 }

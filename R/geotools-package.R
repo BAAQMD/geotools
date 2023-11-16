@@ -30,32 +30,14 @@
 #'
 NULL
 
-#' EPSG 4326
-#'
-#' @docType data
-#' @rdname EPSG_4326
-#' @name EPSG_4326
-#' @description WGS84 (EPSG 4326)
-#' @format an `sp::CRS` object
-'EPSG_4326'
-
 #' WGS84 GPS (EPSG:4326)
 #'
 #' @docType data
-#' @rdname EPSG_4326
+#' @rdname WGS84_CRS
 #' @name WGS84_GPS
 #' @description WGS84 (EPSG 4326)
 #' @format integer (EPSG code)
 'WGS84_GPS'
-
-#' UTM10 NAD83 (EPSG:26910)
-#'
-#' @docType data
-#' @rdname EPSG_26910
-#' @name NAD83_UTM10
-#' @description Universal Transverse Mercator (UTM), Zone 10, North American Datum (NAD) 1983
-#' @format integer (EPSG code)
-'NAD83_UTM10'
 
 #' UTM10 NAD83 (EPSG:26910)
 #'

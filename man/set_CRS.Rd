@@ -14,6 +14,3 @@ set_CRS(x, new_CRS)
 \description{
 Manually set coordinate reference system
 }
-\note{
-The inventory package provides a few: \code{WGS84} (lng/lat), \code{UTM10_NAD83}, \code{UTM10_NAD27}, and \code{UTM10_WGS84}. For others, see
-}
