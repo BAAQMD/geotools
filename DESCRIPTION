@@ -52,7 +52,6 @@ Imports:
     png,
     slippymath,
     digest,
-    ARB (>= 2018.05.16),
     lazyeval
 Suggests:
     leaflet,
