@@ -23,8 +23,8 @@ merge_SpatialDataFrame
 }
 \section{Functions}{
 \itemize{
-\item \code{merge_SpatialPolygonsDataFrame}: Merge a SpatialPolygonsDataFrame with a data.frame
+\item \code{merge_SpatialPolygonsDataFrame()}: Merge a SpatialPolygonsDataFrame with a data.frame
 
-\item \code{merge_SpatialLinesDataFrame}: Merge a SpatialPolygonsDataFrame with a data.frame
+\item \code{merge_SpatialLinesDataFrame()}: Merge a SpatialPolygonsDataFrame with a data.frame
+
 }}
-
