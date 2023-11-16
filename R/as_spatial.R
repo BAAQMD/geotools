@@ -25,7 +25,10 @@ as_spatial <- function (
   msg <- function (...) if (isTRUE(verbose)) message("[as_spatial] ", ...)
 
   if (isTRUE(na.rm)) {
-    input_data <- filter(input_data, if_all(coord_vars, is.finite))
+    input_data <-
+      dplyr::filter(
+        input_data,
+        dplyr::if_all(!!coord_vars, is.finite))
   }
 
   geodata <-
