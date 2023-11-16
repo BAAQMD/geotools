@@ -35,7 +35,7 @@ ggplot_tileset <- function (
 
   tile_grid <-
     slippymath::bbox_to_tile_grid(
-      sf::st_bbox(sf::st_transform(buffered_envelope, WGS84_GPS)),
+      sf::st_bbox(sf::st_transform(buffered_envelope, WGS84_CRS)),
       zoom = zoom,
       max_tiles = max_tiles)
 

@@ -7,7 +7,7 @@ expect_warning(
   SFBA_tracts_WGS84 <-
     TIGER2015::TIGER2015_SFBA_tracts %>%
     reproject(
-      new_CRS = WGS84),
+      new_CRS = WGS84_CRS),
   "is deprecated")
 
 #
@@ -19,7 +19,7 @@ expect_warning(
     subset(
       str_detect(.$GEOID, "^06001")) %>%
     reproject(
-      new_CRS = WGS84),
+      new_CRS = WGS84_CRS),
   "is deprecated")
 
 test_that("Alameda County (sp)", {

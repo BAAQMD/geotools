@@ -10,7 +10,7 @@ test_that("na.rm = default", {
 
   test_geodata <-
     input_data %>%
-    as_spatial(coord_vars = c("fac_lng", "fac_lat"), crs = WGS84)
+    as_spatial(coord_vars = c("fac_lng", "fac_lat"), crs = WGS84_CRS)
 
   expect_equal(1, nrow(test_geodata))
 
@@ -20,7 +20,7 @@ test_that("na.rm = TRUE", {
 
   test_geodata <-
     input_data %>%
-    as_spatial(coord_vars = c("fac_lng", "fac_lat"), crs = WGS84, na.rm = TRUE)
+    as_spatial(coord_vars = c("fac_lng", "fac_lat"), crs = WGS84_CRS, na.rm = TRUE)
 
   expect_equal(1, nrow(test_geodata))
 
@@ -32,7 +32,7 @@ test_that("na.rm = FALSE", {
 
     test_geodata <-
       input_data %>%
-      as_spatial(coord_vars = c("fac_lng", "fac_lat"), crs = WGS84, na.rm = FALSE),
+      as_spatial(coord_vars = c("fac_lng", "fac_lat"), crs = WGS84_CRS, na.rm = FALSE),
 
     "missing values in coordinates not allowed")
 

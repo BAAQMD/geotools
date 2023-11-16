@@ -93,19 +93,19 @@ ggplot_map_RSP <- function (
       msg("tileset is: ", tileset)
 
       #crs <- WEB_MERCATOR
-      crs <- st_crs(WGS84_GPS)
+      crs <- WGS84_CRS
       datum <- crs
       map_coord <- coord_sf(crs = crs, datum = datum)
 
       basemap_lonlat_bounds <-
         set_names(
-          st_bbox(st_transform(buffered_envelope, WGS84_GPS)),
+          st_bbox(st_transform(buffered_envelope, WGS84_CRS)),
           c("left", "bottom", "right", "top"))
 
       basemap_lonlat_center <-
         set_names(as.numeric(
           st_coordinates(st_transform(
-            st_centroid(buffered_envelope), WGS84_GPS))), c("lon", "lat"))
+            st_centroid(buffered_envelope), WGS84_CRS))), c("lon", "lat"))
 
       msg("basemap_lonlat_bounds is: ", str_csv(basemap_lonlat_bounds))
       msg("basemap_lonlat_center is: ", str_csv(basemap_lonlat_center))
@@ -153,7 +153,7 @@ ggplot_map_RSP <- function (
       geom_sf(
         fill = "white", alpha = I(1 - tile_opacity),
         inherit.aes = FALSE,
-        data = buffered_envelope) #st_buffer(st_transform(envelope, WGS84_GPS), 0.1))
+        data = buffered_envelope)
 
     map_object <-
       map_object +
