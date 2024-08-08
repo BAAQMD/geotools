@@ -81,28 +81,6 @@ setMethod(
   c("SpatialLinesDataFrame", "data.frame"),
   merge_SpatialLinesDataFrame)
 
-#' reproject
-#'
-#' Reproject/transform geodata.
-#'
-#' @param x a `Spatial*` or `sf` object
-#' @param new_CRS integer, `CRS`, or `st_crs` object
-#' @param new_coordnames character vector
-#'
-#' @details
-#' If `x` is a `Spatial` object (from the `sp` package), `new_CRS` must be a `CRS` object; otherwise, pass an integer (EPSG code) or `st_crs()` result.
-#'
-#' @return An object of the same class as `x`, but reprojected to the new coordinate system, and with new coordnames.
-#'
-#' @export
-reproject <- function (
-    x,
-    new_CRS = EPSG_4326,
-    new_coordnames = c("lng", "lat")
-) {
-  .Defunct("sf::st_transform")
-}
-
 clip_and_trim <- function (rst, lower = .Machine$double.eps, upper = Inf) {
   .Defunct()
   clamped <- raster::clamp(rst, -Inf, upper, useValues = TRUE)

@@ -1,5 +1,3 @@
-#' @docType package
-#'
 #' @importClassesFrom sp SpatialPointsDataFrame SpatialLinesDataFrame SpatialPolygonsDataFrame
 #'
 #' @import utils
@@ -25,8 +23,8 @@
 #' @importFrom funtools rbind_list
 #'
 #' @importFrom mapview mapview
-#'
-NULL
+#' @keywords internal
+"_PACKAGE"
 
 #' WGS84 GPS (EPSG:4326)
 #'

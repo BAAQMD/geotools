@@ -45,6 +45,7 @@ Imports:
     png,
     digest,
     lazyeval,
+    slippymath,
     units
 Suggests:
     tools,
@@ -55,7 +56,6 @@ Suggests:
     ggmap,
     raster,
     gstat,
-    slippymath,
     ncmeta,
     jsonlite,
     leaflet,
@@ -68,6 +68,6 @@ ReverseDepends:
 Extends:
     sp,
     dplyr
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
