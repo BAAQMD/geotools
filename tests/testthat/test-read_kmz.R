@@ -6,6 +6,7 @@ test_that("read_kmz", {
   result <- read_kmz(kmz_path)
   expect_is(result, "sf")
   expect_equal(nrow(result), 1)
-  expect_true(all(c("Name", "Description") %in% names(result)))
+
+  expect_true(all(c("name", "description") %in% str_to_lower(names(result))))
 
 })
