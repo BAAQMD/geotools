@@ -9,7 +9,7 @@ sp_centroid(spobj, ...)
 \arguments{
 \item{spobj}{\verb{Spatial*} object}
 
-\item{...}{passed to \code{\link[rgeos:topo-unary-gCentroid]{rgeos::gCentroid()}}}
+\item{...}{passed to rgeos::gCentroid()}
 }
 \description{
 Extract the coordinates, as a simple vector, of the centroid of a Spatial* object.

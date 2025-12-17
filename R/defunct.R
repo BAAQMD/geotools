@@ -31,7 +31,7 @@ filter_.SpatialPolygonsDataFrame <-
 #' Extract the coordinates, as a simple vector, of the centroid of a Spatial* object.
 #'
 #' @param spobj `Spatial*` object
-#' @param ... passed to [rgeos::gCentroid()]
+#' @param ... passed to rgeos::gCentroid()
 #'
 #' @export
 sp_centroid <- function (spobj, ...) {
